@@ -7,6 +7,11 @@ application/config/database.php
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
+!*/cache/index.html
+!*/cache/.htaccess
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
