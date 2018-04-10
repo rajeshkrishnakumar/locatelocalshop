@@ -126,6 +126,39 @@ class Vendor extends CI_Controller
 
 	}
 
+	    public function vendorlogin()
+	{
+	 $email=$this->input->post('email');
+	 $password=$this->input->post('password'); 
+	 $result=array();
+	  if(!empty($email) && !empty($password)){		 
+		if($this->admin_vendor->adminlogin($email,$password))
+		{
+			$result['status']=1;
+		}
+		else{
+			$result['status']=0;
+		}
+	  }else{
+	  	$result['status']=2;
+	  }	
+		echo json_encode($result);
+		exit;			
+	}
+
+
+
+public function logout()
+	{
+		if($this->admin_vendor->logout())
+		{
+			redirect('Welcome');
+		}else{
+			redirect('Welcome');
+		}
+	}
+
+
 }
 
 ?>

@@ -100,6 +100,23 @@ class Admin_account extends CI_Model
 		} 
 
 	}
+
+	function updatepassword($password){
+		if($this->session->userdata("user")){
+		  $data['password']=md5($password);	
+		  $this->db->where('entity_id', $this->session->userdata("admin")['user_id']);
+		  $query = $this->db->update('admin',$data);
+	      $affected_rows = $this->db->affected_rows();
+	      return true;
+		}else{
+			return false;
+		}
+	}
+
+	function logout(){
+		$this->session->unset_userdata('admin'); 
+		return true;
+	}
 }
 
 ?>

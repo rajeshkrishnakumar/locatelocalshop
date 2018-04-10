@@ -132,6 +132,39 @@ class Account extends CI_Controller
 
 	}
 
+	public function changepassword()
+	{
+	  $data=$this->input->post();
+	  $result=array();
+	  if(!empty($data))	{
+		$this->form_validation->set_rules('password', 'Password', 'required');
+	    $this->form_validation->set_rules('password_conf', 'Password Confirmation', 'required|matches[password]');
+	    if($this->form_validation->run() == TRUE){
+			if($this->admin_account->updatepassword($data['password']))
+			{
+				$result['status']=1;
+			}else{
+				$result['status']=0;
+			}
+		}else{
+			$result['status']=validation_errors();
+		}	
+	  }
+
+	   echo json_encode($result);
+	  exit;
+	   	
+	}
+
+	public function logout()
+	{
+		if($this->admin_account->logout())
+		{
+			redirect('Welcome');
+		}else{
+			redirect('Welcome');
+		}
+	}
 
 }
 ?>

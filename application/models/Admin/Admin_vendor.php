@@ -83,6 +83,29 @@ class Admin_vendor extends CI_Model
 
 	}
 
+	function vendorlogin($email,$password)
+	{
+		$query = $this->db->get_where('vendor',array('email'=> $email , 'password'=> md5($password)));
+		$rowcount = $query->num_rows();
+		 if($rowcount){
+		  $data=$query->first_row('array');
+		   $this->session->set_userdata('vendor', array(
+			    'user_id'  => $data['entity_id'],
+			    'username' => $data['first_name'],		   
+			    'email'     => $data['email'],
+			    'is_logged_in'   => TRUE,
+			));
+		 	return TRUE;
+		 }else{
+		 	return false;
+		 }
+	}
+
+
+	function logout(){
+		$this->session->unset_userdata('vendor'); 
+		return true;
+	}
 
 
 }

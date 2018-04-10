@@ -22,31 +22,40 @@ class Checkout_cart extends CI_Model
 	function checkcouponcode($couponcode){
 		$currentdata=date('Y-m-d H:i:s');
 		$customer_id=$this->session->userdata("user")['user_id'];
-		$this->db->select('entity_id');
+		$this->db->select('*');
 		$this->db->from('promotion');
 		$this->db->where('promotion.coupon_code', $couponcode);
 		$this->db->where('promotion.is_active', 1);
-		$this->db->where('promotion.from_date >=', $currentdata);
-		$this->db->where('promotion.to_date <=', $currentdata);
+		$this->db->where('promotion.from_date <=', $currentdata);
+		$this->db->where('promotion.to_date >=', $currentdata);
+
 		$query = $this->db->get();		 
 		$data=$query->first_row('array');
 		if($data['use_per_customer']==1)
 		{
 			$this->db->select('*');
-			$this->db->from('sales_order');
-			$this->db->where('sales_order.coupon_code', $couponcode);
-			$this->db->where('sales_order.customer_id', $customer_id);
+			$this->db->from('sales_quote');
+			$this->db->where('sales_quote.coupon_code', $couponcode);
+			$this->db->where('sales_quote.customer_id', $customer_id);
 			$query_check_cust = $this->db->get();	
-			$rowcount = $query_check_cust->num_rows();	
-			 if($rowcount){
+			$rowcount = $query_check_cust->num_rows();
+			 if(!$rowcount){
+			 	if($this->updateamountcoupondiscount($data['discount_price'],$couponcode)){
 			 	return $data['discount_price'];
+			 	}else{
+		 		return false;
+			 	}
 			 }else{
 			 	return false;
 			 }
 		}else{
 			$rowcount = $query->num_rows();	
 			 if($rowcount){
+			 	if($this->updateamountcoupondiscount($data['discount_price'],$couponcode)){
 			 	return $data['discount_price'];
+			 	}else{
+		 		return false;
+			 	}
 			 }else{
 			 	return false;
 			 }	
@@ -101,16 +110,6 @@ class Checkout_cart extends CI_Model
 			
 	}
 
-	 // $couponcodeamt=0;
-		//  	 if(!empty($data['coupon_code']))
-		//  	 {
-		//  	 	$couponcodeamt=$this->checkcouponcode();
-		// 	 	 	if(!empty($couponcodeamt)){
-		// 	 	 		$insertdata['coupon_code']=$data['coupon_code'];
-		// 	 	 		$insertdata['discount']=$couponcodeamt;
-		// 	 	 	}
-		//      }
-
 	function addproduct($data)
 	{
 		 if($this->checkqty($data['vendor_id'],$data['product_id'],$data['qty']) && $this->session->userdata("user") )
@@ -120,11 +119,24 @@ class Checkout_cart extends CI_Model
      	     $insertdata['vendor_id']=$data['vendor_id'];
 		 	 $insertdata['is_active']=1;
 		 	 $insertdata['customer_id']=$this->session->userdata("user")['user_id'];
-		 	
-		     $query = $this->db->insert('sales_quote',$insertdata);
-			 $affected_rows = $this->db->affected_rows();
-				if($affected_rows){
-					$quote_id=$this->db->insert_id();
+		  	 
+		 	 $this->db->select('entity_id');
+			 $this->db->from('sales_quote');
+			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+			 $this->db->where('sales_quote.is_active', 1);
+			 $quotefetchquerysession = $this->db->get();
+			 $quotedatasession=$quotefetchquerysession->first_row('array');
+			 if($quotedatasession){
+			 $quoteid=$quotedatasession['entity_id'];	 
+			 $this->session->set_userdata('quote', array(
+									    'quote_id'  =>$quoteid
+									));
+			 $this->updateproduct($data);
+			 }else{
+			 $query = $this->db->insert('sales_quote',$insertdata);	
+			 $quote_id=$this->db->insert_id();
+			 }
+			 if($quote_id){
 					$insertitemdata['quote_id']=$quote_id;
 					$insertitemdata['vendor_id']=$data['vendor_id'];
 					$insertitemdata['product_id']=$data['product_id'];
@@ -469,8 +481,99 @@ function deleteproduct($data)
 	}		 
 }
 
+function updateamountcoupondiscount($amount,$couponcode)
+{
+
+
+	$quote_id=$this->session->userdata("quote")['quote_id'];
+	if($quote_id){		
+	 $this->db->select('grant_total');
+				 $this->db->from('sales_quote');
+				 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+				 $this->db->where('sales_quote.is_active', 1);
+	$quotefetchquery = $this->db->get();
+	$quotedata=$quotefetchquery->first_row('array');	
+	if($quotedata){	 	
+	$discountdata['discount']=$amount;
+	$discountdata['coupon_code']= $couponcode;
+	$discountdata['grant_total']=$quotedata['grant_total']-$amount;
+	$this->db->where('entity_id', $quote_id);
+
+	$updatequotetotalupdatequotetotal_query = $this->db->update('sales_quote',$discountdata);
+	$updatequotetotal_affected_rows = $this->db->affected_rows();
+	return true;
+}else{
+	return false;
+}
+	}else{
+		return false;
+	}
+
 
 }
-?> 
 
+function deleteamountcoupondiscount($couponcode)
+{
+
+
+	$quote_id=$this->session->userdata("quote")['quote_id'];
+	$currentdata=date('Y-m-d H:i:s');
+	$this->db->select('*');
+	$this->db->from('promotion');
+	$this->db->where('promotion.coupon_code', $couponcode);
+	$this->db->where('promotion.is_active', 1);
+	$this->db->where('promotion.from_date <=', $currentdata);
+	$this->db->where('promotion.to_date >=', $currentdata);
+	$query = $this->db->get();		 
+	$data=$query->first_row('array');
+	if($data){
+		if($quote_id){		
+		 $this->db->select('*');
+					 $this->db->from('sales_quote');
+					 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+					 $this->db->where('sales_quote.coupon_code', $couponcode);
+					 $this->db->where('sales_quote.is_active', 1);
+		$quotefetchquery = $this->db->get();
+		$quotedata=$quotefetchquery->first_row('array');			 	
+		if($quotedata){
+		$discountdata['discount']='';
+		$discountdata['coupon_code']= '';
+		$discountdata['grant_total']=$quotedata['grant_total']+$data['discount_price'];
+		$this->db->where('entity_id', $quotedata['entity_id']);
+		$updatequotetotalupdatequotetotal_query = $this->db->update('sales_quote',$discountdata);
+		$updatequotetotal_affected_rows = $this->db->affected_rows();
+		return true;
+		}else{
+			return false;
+		}
+
+	}else{
+		return false;
+	}
+
+	}
+}
+	
+function getquoteproduct(){
+
+	if($this->session->userdata("user")){
+			$this->db->select('sales_quote_item.*,catalog_product.product_name,catalog_product.image_gallery,vendor.display_name,sales_quote.coupon_code,sales_quote.discount,sales_quote.delivery_charge,sales_quote.sub_total,sales_quote.grant_total')
+			         ->from('sales_quote_item')
+			         ->join('sales_quote', 'sales_quote_item.quote_id = sales_quote.entity_id')
+			         ->join('catalog_product', 'sales_quote_item.product_id = catalog_product.entity_id')
+			         ->join('vendor', 'sales_quote_item.vendor_id = vendor.entity_id');
+			$this->db->where('sales_quote.entity_id',$this->session->userdata("quote")['quote_id']);
+			$itemfetchquery = $this->db->get();
+			$itemdata=$itemfetchquery->result('array');
+			return $itemdata;
+
+	}else{
+		return false;
+	}
+}
+
+}
+
+
+?> 
 

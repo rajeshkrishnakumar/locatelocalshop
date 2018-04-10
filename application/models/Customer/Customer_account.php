@@ -25,7 +25,20 @@ class Customer_account extends CI_Model
 			    'email'     => $data['email'],
 			    'is_logged_in'   => TRUE,
 			));
-		 	return TRUE;
+
+		 	 $this->db->select('entity_id');
+			 $this->db->from('sales_quote');
+			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+			 $this->db->where('sales_quote.is_active', 1);
+			 $quotefetchquery = $this->db->get();
+	         $quotedata=$quotefetchquery->first_row('array');
+	         if($quotedata){
+	         	$this->session->set_userdata('quote', array(
+										    'quote_id'  =>$quotedata['entity_id']
+										   	
+										));
+	         	return true;
+	         }
 		 }else{
 		 	return false;
 		 }
@@ -51,8 +64,20 @@ class Customer_account extends CI_Model
 			    'email'     => $data['email'],
 			    'is_logged_in'   => TRUE,
 			));
-
-				return true;
+			 $this->db->select('entity_id');
+			 $this->db->from('sales_quote');
+			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+			 $this->db->where('sales_quote.is_active', 1);
+			 $quotefetchquery = $this->db->get();
+	         $quotedata=$quotefetchquery->first_row('array');
+	         if($quotedata){
+	         	$this->session->set_userdata('quote', array(
+										    'quote_id'  =>$quotedata['entity_id']
+										   	
+										));
+	         	return true;
+	         }
+				
 			}
 			else
 			{
@@ -132,6 +157,26 @@ class Customer_account extends CI_Model
 		}
 
 	}
+
+	function logout(){
+		$this->session->unset_userdata('user'); 
+		return true;
+	}
+
+	function updatepassword($password){
+		if($this->session->userdata("user")){
+		  $data['password']=md5($password);	
+		  $this->db->where('entity_id', $this->session->userdata("user")['user_id']);
+		  $query = $this->db->update('customer',$data);
+	      $affected_rows = $this->db->affected_rows();
+	      return true;
+		}else{
+			return false;
+		}
+	}
+
+
+
 
 
 }

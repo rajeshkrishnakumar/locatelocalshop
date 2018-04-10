@@ -108,6 +108,92 @@ class Cart extends CI_Controller
 
 	
 	}
+
+	function couponpost(){
+
+	  $data=$this->input->post('coupon_code');
+	  $result=array();
+	  if(!empty($data))
+	  {
+
+        $this->form_validation->set_rules('coupon_code', 'Coupon Code', 'required');
+   
+      	  if ($this->form_validation->run() == TRUE){       	  	   
+		  	  	if($this->checkout_cart->checkcouponcode($data))
+			  	{
+			  		$result['status']=1;
+			  	}
+			  	else
+			  	{
+			  		$result['status']=0;
+			  	}
+		  }
+		  else
+  	 	 {
+	  		$result['status']=validation_errors();
+	     }
+	  }	
+	  else
+	  {
+	  	$result['status']=2;
+	  }	
+	  echo json_encode($result);
+	  exit;
+
+	
+	}
+
+	function couponremove(){
+
+	  $data=$this->input->post('coupon_code');
+	  $result=array();
+	  if(!empty($data))
+	  {
+
+        $this->form_validation->set_rules('coupon_code', 'Coupon Code', 'required');
+   
+      	  if ($this->form_validation->run() == TRUE){       	  	   
+		  	  	if($this->checkout_cart->deleteamountcoupondiscount($data))
+			  	{
+			  		$result['status']=1;
+			  	}
+			  	else
+			  	{
+			  		$result['status']=0;
+			  	}
+		  }
+		  else
+  	 	 {
+	  		$result['status']=validation_errors();
+	     }
+	  }	
+	  else
+	  {
+	  	$result['status']=2;
+	  }	
+	  echo json_encode($result);
+	  exit;
+
+	
+	}
+
+	function getquoteitem()
+	{
+		$data=$this->checkout_cart->getquoteproduct();
+		if(!empty($data))
+		{
+		print_r($data);	
+		}else
+		{
+		redirect("welcome");
+		}
+	 
+	
+	}
+
+
+
 }
 
 ?>
+
