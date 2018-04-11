@@ -557,7 +557,7 @@ function deleteamountcoupondiscount($couponcode)
 function getquoteproduct(){
 
 	if($this->session->userdata("user")){
-			$this->db->select('sales_quote_item.*,catalog_product.product_name,catalog_product.image_gallery,vendor.display_name,sales_quote.coupon_code,sales_quote.discount,sales_quote.delivery_charge,sales_quote.sub_total,sales_quote.grant_total')
+			$this->db->select('sales_quote_item.*,catalog_product.product_name,catalog_product.image_gallery,vendor.display_name,sales_quote.coupon_code,sales_quote.discount,sales_quote.delivery_charge,sales_quote.sub_total,sales_quote.grant_total,sales_quote.items_count')
 			         ->from('sales_quote_item')
 			         ->join('sales_quote', 'sales_quote_item.quote_id = sales_quote.entity_id')
 			         ->join('catalog_product', 'sales_quote_item.product_id = catalog_product.entity_id')
@@ -571,6 +571,60 @@ function getquoteproduct(){
 		return false;
 	}
 }
+
+function placeorder($data){
+	if($this->session->userdata("user")){
+		 $this->db->from('sales_quote');
+		 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
+		 $this->db->where('sales_quote.is_active', 1);
+		 $this->db->where('sales_quote.entity_id', $this->session->userdata("quote")['quote_id']);	
+		 $orderitemfetchquery = $this->db->get();
+	     $orderitemdata=$orderitemfetchquery->first_row('array');
+	     $orderitemdata['payment_method']=$data['payment_method'];
+	     $orderitemdata['shipment_method']=$data['shipment_method'];
+	     $orderitemdata['status']='processing';
+	     unset($orderitemdata['entity_id']);
+	     unset($orderitemdata['is_active']);
+	     $orderitemquery = $this->db->insert('sales_order',$orderitemdata);
+	     $orderid=$this->db->insert_id();
+	     $orderitemquery_affected_rows = $this->db->affected_rows();
+	     if($orderitemquery_affected_rows){
+	     $this->db->select('vendor_id,quote_id,product_id,qty,price,row_total');
+	     $this->db->from('sales_quote_item');
+		 $this->db->where('sales_quote_item.quote_id', $this->session->userdata("quote")['quote_id']);
+	 	 $itemfetchquery = $this->db->get();
+		 $itemdata=$itemfetchquery->result('array');
+		 
+		 foreach ($itemdata as $itemdatakey => $itemdatavalue) {
+		 	unset($itemdatavalue['item_id']);
+		 	$itemdatavalue['order_id']=$orderid;		 	
+		 	$bulkiteminsert=$this->db->insert('sales_order_item', $itemdatavalue);
+		 }
+	     $orderitemsquery_affected_rows = $this->db->affected_rows();
+		     if($orderitemsquery_affected_rows){
+		      	$this->db->where('entity_id', $this->session->userdata("quote")['quote_id']);	
+		      	$quotedisable['is_active']=0;  
+			    $updatequotetotalupdatequotetotal_query = $this->db->update('sales_quote',$quotedisable);
+			    $updatequotetotalupdatequotetotal_query_affected_rows = $this->db->affected_rows();
+			    if($updatequotetotalupdatequotetotal_query_affected_rows){
+					$this->session->unset_userdata('quote');
+					return true ;
+			    }else{
+			 	return false ;   	
+			    }
+
+		     }else{
+		     return false ;	
+		     }
+	     }else{
+	     	return false ;
+	     }
+	      
+	}else{
+		return false;
+}
+}
+
 
 }
 

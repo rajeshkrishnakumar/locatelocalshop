@@ -191,6 +191,30 @@ class Cart extends CI_Controller
 	
 	}
 
+function placeorder()
+	{
+		$postdata=$this->input->post();
+		
+
+        $this->form_validation->set_rules('shipment_method', 'Shipment Method', 'required');       
+        $this->form_validation->set_rules('payment_method', 'Payment Method', 'required');
+		if ($this->form_validation->run() == TRUE){
+				if($this->checkout_cart->placeorder($postdata))
+			  	{
+			  		$result['status']=1;
+			  	}
+			  	else
+			  	{
+			  		$result['status']=0;
+			  	}
+		}else{
+			$result['status']=validation_errors();
+		}
+		
+	 	echo json_encode($result);
+	    exit;
+	
+	}
 
 
 }
