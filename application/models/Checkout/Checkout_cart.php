@@ -71,10 +71,10 @@ class Checkout_cart extends CI_Model
 		$this->db->where('vendor_product.vendor_id', $vendorid);
 		$query = $this->db->get();		 
 		$data=$query->first_row('array');
-		if($data){
-		 	return $data['price'];
+		if($data['price'] > $data['special_price']){
+		 	return $data['special_price'];
 		 }else{
-		 	return false;
+		 	return $data['price'];
 		 }
 	}
 
