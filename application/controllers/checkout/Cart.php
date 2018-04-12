@@ -180,13 +180,9 @@ class Cart extends CI_Controller
 	function getquoteitem()
 	{
 		$data=$this->checkout_cart->getquoteproduct();
-		if(!empty($data))
-		{
+		  
 		print_r($data);	
-		}else
-		{
-		redirect("welcome");
-		}
+		   
 	 
 	
 	}
@@ -198,23 +194,29 @@ function placeorder()
 
         $this->form_validation->set_rules('shipment_method', 'Shipment Method', 'required');       
         $this->form_validation->set_rules('payment_method', 'Payment Method', 'required');
-		if ($this->form_validation->run() == TRUE){
-				if($this->checkout_cart->placeorder($postdata))
-			  	{
-			  		$result['status']=1;
-			  	}
-			  	else
-			  	{
-			  		$result['status']=0;
-			  	}
+		if(!empty($postdata))
+		  {
+			if ($this->form_validation->run() == TRUE){
+					if($this->checkout_cart->placeorder($postdata))
+				  	{
+				  		$result['status']=1;
+				  	}
+				  	else
+				  	{
+				  		$result['status']=0;
+				  	}
+			}else{
+				$result['status']=validation_errors();
+			}
+
 		}else{
-			$result['status']=validation_errors();
+				$result['status']=0;
+			}
+			
+		 	echo json_encode($result);
+		    exit;
 		}
-		
-	 	echo json_encode($result);
-	    exit;
 	
-	}
 
 
 }

@@ -245,4 +245,31 @@ class Account extends CI_Controller
 	  exit;
 	   	
 	}
+
+	public function customerprofilefetch(){
+		if($this->session->userdata("user")['user_id']){
+			print_r($this->customer_account->customerprofilefetch());
+			return $this->customer_account->customerprofilefetch();
+		}else{
+			show_404();
+		}
+	}
+
+	public function customerorderfetch(){
+		if($this->session->userdata("user")['user_id']){
+			print_r($this->customer_account->customerorderfetch());
+			return $this->customer_account->customerorderfetch();
+		}else{
+			show_404();
+		}
+	}
+
+	public function customeraddressfetch(){
+		if($this->session->userdata("user")['user_id']){
+			print_r($this->customer_account->customeraddressfetch());
+			return $this->customer_account->customeraddressfetch();
+		}else{
+			show_404();
+		}
+	}
 }

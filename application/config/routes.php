@@ -53,3 +53,13 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['shop/(:any)'] = "vendor/vendor/fetchvendorproduct/$1";
+$route['vendors']="vendor/vendor/fetchvendor";
+$route['vendorbycategory']='vendor/vendor/fetchvendorbycategory'	;
+$route['login']='/customer/account/usercheck'	;
+$route['register']='customer/account/userregister'	;
+$route['cart']='checkout/cart/getquoteitem'	;
+$route['customer/vieworder']='customer/account/customerorderfetch';
+$route['customer/viewprofile']='customer/account/customerprofilefetch';
+$route['customer/viewaddress']='customer/account/customeraddressfetch';
+
+

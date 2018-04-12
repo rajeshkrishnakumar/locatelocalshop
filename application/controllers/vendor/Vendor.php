@@ -13,8 +13,42 @@ class Vendor extends CI_Controller
         $this->load->helper('url_helper');
 		 
 	}
- 
-      
+	
+
+	public function fetchvendor(){
+
+	 $data=$this->input->post();
+
+	 if(!empty($data)){
+	 	$productdata= $this->vendor_vendor->fetchvendor($data);  
+	 	if($productdata){
+	 		print_r($productdata);
+	 	}else{
+	 		print_r($productdata);
+	 	}
+	 }	else{
+	 	show_404();
+	 }   
+
+    }
+
+    public function fetchvendorbycategory(){
+
+	 $data=$this->input->post();
+
+	 if(!empty($data)){
+	 	$productdata= $this->vendor_vendor->fetchvendorbycategory($data);  
+	 	if($productdata){
+	 		print_r($productdata);
+	 	}else{
+	 	 print_r($productdata);
+	 	}
+	 }	else{
+	 	show_404();
+	 }   
+
+    }
+        
 
 	public function fetchvendorproduct($value=""){
 	

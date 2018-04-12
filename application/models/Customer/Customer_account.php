@@ -37,8 +37,9 @@ class Customer_account extends CI_Model
 										    'quote_id'  =>$quotedata['entity_id']
 										   	
 										));
-	         	return true;
+	         	
 	         }
+	         return true;
 		 }else{
 		 	return false;
 		 }
@@ -175,9 +176,45 @@ class Customer_account extends CI_Model
 		}
 	}
 
+function customerprofilefetch(){
+		if($this->session->userdata("user")){
+		$this->db->select('first_name,last_name,email,mobile');
+			 $this->db->from('customer');
+			 $this->db->where('customer.entity_id', $this->session->userdata("user")['user_id']);
+			 $customerprofilefetch = $this->db->get();
+	         $customerprofilefetchdata=$customerprofilefetch->first_row('array');
+	      return $customerprofilefetchdata;
+		}else{
+			return false;
+		}
+	}
 
+function customerorderfetch(){
+		if($this->session->userdata("user")){
+		$this->db->select('*');
+			 $this->db->from('sales_order');
+			 $this->db->where('sales_order.customer_id', $this->session->userdata("user")['user_id']);
+			 $customerorderfetch = $this->db->get();
+	         $customerorderfetchdata=$customerorderfetch->result('array');
+	      return $customerorderfetchdata;
+		}else{
+			return false;
+		}
+	}
 
-
+function customeraddressfetch(){
+	if($this->session->userdata("user")){
+		$this->db->select('*');
+			 $this->db->from('customer_address');
+			 $this->db->where('customer_address.customer_id', $this->session->userdata("user")['user_id']);
+			 $customeraddressfetch = $this->db->get();
+	         $customeraddressdata=$customeraddressfetch->result('array');
+	      return $customeraddressdata;
+		}else{
+			return false;
+		}
+	
+}
 
 }
 
