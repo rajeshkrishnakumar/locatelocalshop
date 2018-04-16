@@ -26,7 +26,7 @@ class Customer_account extends CI_Model
 			    'is_logged_in'   => TRUE,
 			));
 
-		 	 $this->db->select('entity_id');
+		 	 $this->db->select('entity_id,items_count');
 			 $this->db->from('sales_quote');
 			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
 			 $this->db->where('sales_quote.is_active', 1);
@@ -34,8 +34,8 @@ class Customer_account extends CI_Model
 	         $quotedata=$quotefetchquery->first_row('array');
 	         if($quotedata){
 	         	$this->session->set_userdata('quote', array(
-										    'quote_id'  =>$quotedata['entity_id']
-										   	
+										    'quote_id'  =>$quotedata['entity_id'],
+										   	'items_count'  =>$quotedata['items_count']
 										));
 	         	
 	         }
@@ -56,7 +56,7 @@ class Customer_account extends CI_Model
 		$affected_rows = $this->db->affected_rows();
 			if($affected_rows){
 			$id = $this->db->insert_id();
-			$q = $this->db->get_where('customer', array('id' => $id));
+			$q = $this->db->get_where('customer', array('entity_id' => $id));
 			$data=$q->first_row('array');
 
 			$this->session->set_userdata('user', array(
@@ -65,7 +65,7 @@ class Customer_account extends CI_Model
 			    'email'     => $data['email'],
 			    'is_logged_in'   => TRUE,
 			));
-			 $this->db->select('entity_id');
+			 $this->db->select('entity_id,items_count');
 			 $this->db->from('sales_quote');
 			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
 			 $this->db->where('sales_quote.is_active', 1);
@@ -73,12 +73,14 @@ class Customer_account extends CI_Model
 	         $quotedata=$quotefetchquery->first_row('array');
 	         if($quotedata){
 	         	$this->session->set_userdata('quote', array(
-										    'quote_id'  =>$quotedata['entity_id']
+										    'quote_id'  =>$quotedata['entity_id'],
+										   	'items_count'  =>$quotedata['items_count']
+
 										   	
 										));
 	         	return true;
 	         }
-				
+			return true;	
 			}
 			else
 			{
@@ -161,6 +163,7 @@ class Customer_account extends CI_Model
 
 	function logout(){
 		$this->session->unset_userdata('user'); 
+		$this->session->unset_userdata('quote'); 
 		return true;
 	}
 
@@ -214,6 +217,38 @@ function customeraddressfetch(){
 			return false;
 		}
 	
+}
+
+function customeraddressedit($data){
+	if($this->session->userdata("user")){
+		$this->db->select('*');
+			 $this->db->from('customer_address');
+			 $this->db->where('customer_address.entity_id', $data);
+			 $customeraddressfetch = $this->db->get();
+	         $customeraddressdata=$customeraddressfetch->first_row('array');
+	      return $customeraddressdata;
+		}else{
+			return false;
+		}
+	
+}
+
+
+function customeraddressdelete($id){
+	if($this->session->userdata("user")){
+		 $this->db->where('entity_id', $id);	
+		 $customeraddressdeletequery = $this->db->delete('customer_address');;
+	      $customeraddressdeletefirerow = $this->db->affected_rows(); 
+	      if($customeraddressdeletefirerow){
+	      	return true;
+	      }else{
+	      	return false;	
+	      }
+	      
+		}else{
+			return false;
+		}
+
 }
 
 }

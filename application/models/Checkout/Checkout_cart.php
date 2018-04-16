@@ -71,7 +71,7 @@ class Checkout_cart extends CI_Model
 		$this->db->where('vendor_product.vendor_id', $vendorid);
 		$query = $this->db->get();		 
 		$data=$query->first_row('array');
-		if($data['price'] > $data['special_price']){
+		if($data['price'] > $data['special_price'] && $data['special_price'] > 0) {
 		 	return $data['special_price'];
 		 }else{
 		 	return $data['price'];
@@ -119,7 +119,7 @@ class Checkout_cart extends CI_Model
      	     $insertdata['vendor_id']=$data['vendor_id'];
 		 	 $insertdata['is_active']=1;
 		 	 $insertdata['customer_id']=$this->session->userdata("user")['user_id'];
-		  	 
+		  	 	  
 		 	 $this->db->select('entity_id');
 			 $this->db->from('sales_quote');
 			 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
@@ -131,6 +131,7 @@ class Checkout_cart extends CI_Model
 			 $this->session->set_userdata('quote', array(
 									    'quote_id'  =>$quoteid
 									));
+
 			 $this->updateproduct($data);
 			 }else{
 			 $query = $this->db->insert('sales_quote',$insertdata);	
@@ -231,7 +232,7 @@ class Checkout_cart extends CI_Model
 					$itemfetchquery = $this->db->get();
 					$itemdata=$itemfetchquery->first_row('array');
 					if($itemdata){
-						$insertitemdata['qty']=$data['qty']+$itemdata['qty'] ;
+						$insertitemdata['qty']=$data['qty']+1 ;
 						$insertitemdata['row_total']=$itemdata['price']*$insertitemdata['qty'];
 						$this->db->where('item_id', $itemdata['item_id']);		  
 			    	    $query = $this->db->update('sales_quote_item',$insertitemdata);
@@ -364,8 +365,8 @@ function deleteproduct($data)
 			 $this->db->where('sales_quote_item.quote_id', $quote_id);
 			 $itemfetchquery = $this->db->get();
 			 $itemdata=$itemfetchquery->first_row('array');	
-			 $deleteproduct['qty']=$itemdata['qty']-$data['qty'];
-			 $deleteproduct['row_total']=$itemdata['row_total']-($itemdata['price']*$data['qty']);	
+			 $deleteproduct['qty']=$data['qty']-1;
+			 $deleteproduct['row_total']=$itemdata['price']*$deleteproduct['qty'];
 			 $this->db->where('item_id', $itemdata['item_id']);	  
 			 if($deleteproduct['qty']==0){
 			 	$query = $this->db->delete('sales_quote_item');
@@ -400,7 +401,6 @@ function deleteproduct($data)
 								     	$updatequotetotal['delivery_charge']=0;	
 								     	}
 								     $updatequotetotal['grant_total']=$subtotal+$updatequotetotal['delivery_charge'];	
-
 								    $this->db->where('entity_id', $quote_id);	  
 								    $updatequotetotalupdatequotetotal_query = $this->db->update('sales_quote',$updatequotetotal);
 								    $updatequotetotal_affected_rows = $this->db->affected_rows();

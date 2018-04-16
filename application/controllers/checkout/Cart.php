@@ -8,11 +8,11 @@ class Cart extends CI_Controller
         parent::__construct();
         $this->load->model('Checkout/checkout_cart');
         $this->load->helper('url_helper');
+        $this->load->library('user_agent');
     }
 
 	function addproduct(){
 	  $data=$this->input->post();
-	  $result=array();
 	  if(!empty($data))
 	  {
 
@@ -23,24 +23,23 @@ class Cart extends CI_Controller
        	  if ($this->form_validation->run() == TRUE){       	  	   
 		  	  	if($this->checkout_cart->addproduct($data))
 			  	{
-			  		$result['status']=1;
+			  		redirect($this->agent->referrer().'?msg=success');
 			  	}
 			  	else
 			  	{
-			  		$result['status']=0;
+			  		redirect($this->agent->referrer().'?msg=success');
 			  	}
 		  }
 		  else
   	 	 {
-	  		$result['status']=validation_errors();
+	  		redirect($this->agent->referrer().'?msg=success');
 	     }
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	redirect($this->agent->referrer().'?msg=success');
 	  }	
-	  echo json_encode($result);
-	  exit;
+	   
 
 	}
 
@@ -179,13 +178,19 @@ class Cart extends CI_Controller
 
 	function getquoteitem()
 	{
-		$data=$this->checkout_cart->getquoteproduct();
-		  
-		print_r($data);	
+		
+
+		$data['product']=$this->checkout_cart->getquoteproduct();
+		$this->load->template('cart',$data);  
+			
 		   
 	 
 	
 	}
+
+function checkout(){
+	$this->load->template('checkout');  
+}
 
 function placeorder()
 	{
@@ -197,7 +202,7 @@ function placeorder()
 		if(!empty($postdata))
 		  {
 			if ($this->form_validation->run() == TRUE){
-					if($this->checkout_cart->placeorder($postdata))
+					if($this->checkout_cart_cart->placeorder($postdata))
 				  	{
 				  		$result['status']=1;
 				  	}

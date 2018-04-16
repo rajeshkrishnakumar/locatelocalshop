@@ -2,11 +2,11 @@
 class Vendor_vendor extends CI_Model
 {
 	function fetchvendor($data){
-		$data=$this->getpincodes($data['lat'],$data['long'],'10');
+		$pincodes=$this->getpincodes($data['lat'],$data['lng'],'10');
 		 $this->db->select('vendor.email,vendor.mobile,vendor.display_name,vendor.address_1,vendor.address_2,vendor.pincode,vendor.city,vendor.state');
 		 $this->db->from('vendor');
-		 $this->db->where_in('pincode',$data);
- 
+		 $this->db->where_in('pincode',$pincodes);
+ 		
 		$vendorfetchquery = $this->db->get();
 		$vendordata=$vendorfetchquery->result('array');
 		if($vendordata){
@@ -18,7 +18,7 @@ class Vendor_vendor extends CI_Model
 	 }
 
 	 function fetchvendorbycategory($postdata){		 
-		$data=$this->getpincodes($postdata['lat'],$postdata['long'],'10');
+		$data=$this->getpincodes($postdata['lat'],$postdata['lng'],'10');
 		 $this->db->select('vendor.email,vendor.mobile,vendor.display_name,vendor.address_1,vendor.address_2,vendor.pincode,vendor.city,vendor.state');
 		 $this->db->from('vendor');
 		 $this->db->where_in('pincode',$data);
@@ -33,9 +33,23 @@ class Vendor_vendor extends CI_Model
 		 
 	 }
 
+	  function fetchvendordetail($postdata){
+		 $this->db->select('vendor.email,vendor.mobile,vendor.display_name,vendor.address_1,vendor.address_2,vendor.pincode,vendor.city,vendor.state');
+		 $this->db->from('vendor');
+		 $this->db->where('vendor.display_name',$postdata);
+		$vendorfetchcatquery = $this->db->get();
+		$vendordata=$vendorfetchcatquery->first_row('array');
+		if($vendordata){
+			return $vendordata;
+		}else{
+			return false;
+		}
+		 
+	 }
+
 
 	function fetchvendorproduct($data){
-					 $this->db->select('vendor.email,vendor.mobile,vendor.display_name,vendor.address_1,vendor.address_2,vendor.pincode,vendor.city,vendor.state,vendor_product.price,vendor_product.product_offers,catalog_product.product_name,catalog_product.special_price,catalog_product.product_desc,catalog_product.brand,catalog_product.image_gallery');
+					 $this->db->select('vendor.entity_id as vendor_id,vendor_product.price,vendor_product.product_id,vendor_product.qty,vendor_product.product_offers,catalog_product.product_name,catalog_product.special_price,catalog_product.product_desc,catalog_product.brand,catalog_product.image_gallery');
 					 $this->db->from('vendor')
 				     		  ->join('vendor_product', 'vendor.entity_id = vendor_product.vendor_id')
 				     		  ->join('catalog_product', 'catalog_product.entity_id = vendor_product.product_id')
@@ -48,6 +62,8 @@ class Vendor_vendor extends CI_Model
 			return false;
 		}
 	}
+
+
 
 	function getpincodes($lat,$long,$distance){
 		 $str = "SELECT pincode, `lat`, `long`, 6371 * 2 *

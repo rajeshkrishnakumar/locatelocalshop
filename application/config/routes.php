@@ -52,14 +52,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['shoplocator']="vendor/vendor/vendorview";
 $route['shop/(:any)'] = "vendor/vendor/fetchvendorproduct/$1";
 $route['vendors']="vendor/vendor/fetchvendor";
 $route['vendorbycategory']='vendor/vendor/fetchvendorbycategory'	;
 $route['login']='/customer/account/usercheck'	;
 $route['register']='customer/account/userregister'	;
+$route['logout']='customer/account/logout'	;
 $route['cart']='checkout/cart/getquoteitem'	;
-$route['customer/vieworder']='customer/account/customerorderfetch';
-$route['customer/viewprofile']='customer/account/customerprofilefetch';
-$route['customer/viewaddress']='customer/account/customeraddressfetch';
-
-
+$route['cart/add']='checkout/cart/addproduct'	;
+$route['checkout']='checkout/cart/checkout';
+$route['customer/account']='customer/account/customerview';
+$route['customer/address/delete/(:any)']='customer/account/customeraddressdelete/$1';
+$route['customer/address/add']='customer/account/addaddress';
+$route['customer/address/edit/(:any)']='customer/account/editaddress/$1';
