@@ -503,12 +503,21 @@ jQuery('#editaddress').validate({
   });
 
 jQuery(document).on("click", ".value-plus", function() {  
-    formid=jQuery(this).attr("rowid");
+     formid=jQuery(this).attr("rowid");
+    var values = {};
+      jQuery.each(jQuery('#'+formid).serializeArray(), function(i, field) {        
+         
+          values[field.name] = field.value;        
+          
+         
+      });
+      values['qty']=1;
+         
 
     jQuery.ajax({
                 url: URL + "checkout/cart/updateproduct",
                 type: "POST",
-                data: jQuery("#"+formid).serializeArray(),
+                data: values,
                 success: function(transport){
                  var result=JSON.parse(transport);
                   
@@ -537,8 +546,10 @@ jQuery(document).on("click", ".value-minus", function() {
     formid=jQuery(this).attr("rowid");
     var values = {};
       jQuery.each(jQuery('#'+formid).serializeArray(), function(i, field) {
-          values[field.name] = field.value;
+          values[field.name] = field.value;        
+          
       });
+       values['qty']=1;
         values['flag']=1;
 
     jQuery.ajax({
@@ -605,6 +616,103 @@ jQuery(document).on("click", ".close1", function() {
     
 });
 
+
+jQuery(document).on("click", ".value-minus", function() {  
+    formid=jQuery(this).attr("rowid");
+    var values = {};
+      jQuery.each(jQuery('#'+formid).serializeArray(), function(i, field) {
+          values[field.name] = field.value;        
+          
+      });
+       values['qty']=1;
+        values['flag']=1;
+
+    jQuery.ajax({
+                url: URL + "checkout/cart/deleteproduct",
+                type: "POST",
+                data: values,
+                success: function(transport){
+                 var result=JSON.parse(transport);
+                  
+                   if(result.status==1){
+                         window.location.reload();        
+                   }else if (result.status==0) {
+                    jQuery('#carterrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                    jQuery('#carterrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#carterrormsg").hide();
+                     }, 3000);
+                   }else{
+                     jQuery('#carterrormsg').html(result.status);
+                     jQuery('#carterrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#carterrormsg").hide();
+                     }, 3000);
+                    
+                   }              
+               }
+              });
+    
+});
+
+jQuery('#placeorder').click(function(){
+  jQuery("#checkout").submit();
+});
+
+jQuery('#checkout').validate({
+
+    errorElement: "span",
+    rules: {
+        payment: {
+          required: true
+                },
+        shipping: {          
+          required: true
+                }
+    },
+    messages :{
+      first_name : {
+       required:"Please enter a valid name"
+      }   ,
+     last_name : "Please enter a valid name"       
+    },
+
+    submitHandler: function (form) {
+       jQuery.ajax({
+                url: URL + "placeorder",
+                type: "POST",
+                data: jQuery("#custprofile").serializeArray(),
+                success: function(transport){
+                 var result=JSON.parse(transport);
+                  
+                    if(result.status==1){
+                      jQuery('#checkoutsucessmsg').html('<strong>Oh yes!</strong> Order Placed');
+                      jQuery('#checkoutsucessmsg').show();
+                       setTimeout(function(){
+                       jQuery("#checkoutsucessmsg").hide();
+                       }, 3000);         
+                       window.location.href=URL;
+                   }else if (result.status==0) {
+                    jQuery('#checkouterrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                    jQuery('#checkouterrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#checkouterrormsg").hide();
+                     }, 3000);
+                   }else{
+                     jQuery('#checkouterrormsg').html(result.status);
+                     jQuery('#checkouterrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#checkouterrormsg").hide();
+                     }, 3000);
+                    
+                   }              
+               }
+              });
+            
+    
+    }
+
+});
 
 jQuery('#addresssubmit').click(function(){
      jQuery("#cartaddress").submit();

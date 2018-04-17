@@ -121,7 +121,7 @@ class Adminconfig_config extends CI_Model
 
 	function getpaymentmethod()
 	{
-		if($this->session->userdata("admin")['user_id'] ){
+		if($this->session->userdata("admin")['user_id'] || $this->session->userdata("user") ){
 		  $this->db->select('*');
 		$this->db->from('payment_method');		 
 		$itemfetchquery = $this->db->get();
@@ -144,7 +144,7 @@ class Adminconfig_config extends CI_Model
 	function getshipmethod()
 	{
 
-		if($this->session->userdata("admin")['user_id'] ){
+		if($this->session->userdata("admin")['user_id'] || $this->session->userdata("user") ){
 		  $this->db->select('*');
 		$this->db->from('shipment_method');		 
 		$itemfetchquery = $this->db->get();

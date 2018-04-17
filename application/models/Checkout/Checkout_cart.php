@@ -232,7 +232,7 @@ class Checkout_cart extends CI_Model
 					$itemfetchquery = $this->db->get();
 					$itemdata=$itemfetchquery->first_row('array');
 					if($itemdata){
-						$insertitemdata['qty']=$data['qty']+1 ;
+					$insertitemdata['qty']=$data['qty']+$itemdata['qty'] ;
 						$insertitemdata['row_total']=$itemdata['price']*$insertitemdata['qty'];
 						$this->db->where('item_id', $itemdata['item_id']);		  
 			    	    $query = $this->db->update('sales_quote_item',$insertitemdata);
@@ -365,7 +365,7 @@ function deleteproduct($data)
 			 $this->db->where('sales_quote_item.quote_id', $quote_id);
 			 $itemfetchquery = $this->db->get();
 			 $itemdata=$itemfetchquery->first_row('array');	
-			 $deleteproduct['qty']=$data['qty']-1;
+			 $deleteproduct['qty']=$itemdata['qty']-$data['qty'] ;
 			 $deleteproduct['row_total']=$itemdata['price']*$deleteproduct['qty'];
 			 $this->db->where('item_id', $itemdata['item_id']);	  
 			 if($deleteproduct['qty']==0){

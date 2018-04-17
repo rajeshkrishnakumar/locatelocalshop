@@ -58,9 +58,8 @@ if(isset($_GET['msg'])){
 	
 		 
 					<div class="list clearfix">
-					 	<?php foreach ($product as $productkey => $productvalue) {
-					 	 
-					 	} ?>
+					 	<?php foreach ($product as $productkey => $productvalue) { ?>
+				
 					 
 							<div class="prd_img"><span><img class="img-fluid" src="<?php echo asset_url('images/'.$productvalue['image_gallery']);?>" alt="" /></span></div>
 							<div class="prd_info">
@@ -104,9 +103,15 @@ if(isset($_GET['msg'])){
 			 				<span class="no-stk">Out Of Stock</span>
 			 		<?php } ?>		
 					</div>
+						 	 
+					 <?php	} ?>
 					 
  			 
-		
+		<div class="checkout-right-basket">
+						<a href="<?php echo base_url('checkout')?>">Make a Payment
+							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
+						</a>
+					</div>
 	</div>
 </div>
 </div>

@@ -7,6 +7,7 @@ class Cart extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Checkout/checkout_cart');
+        $this->load->model('Adminconfig/adminconfig_config');
         $this->load->helper('url_helper');
         $this->load->library('user_agent');
     }
@@ -23,21 +24,25 @@ class Cart extends CI_Controller
        	  if ($this->form_validation->run() == TRUE){       	  	   
 		  	  	if($this->checkout_cart->addproduct($data))
 			  	{
-			  		redirect($this->agent->referrer().'?msg=success');
+			  		$path=explode('?', $this->agent->referrer());
+			  		redirect($path[0].'?msg=success');
 			  	}
 			  	else
 			  	{
-			  		redirect($this->agent->referrer().'?msg=success');
+			  		$path=explode('?', $this->agent->referrer());
+			  		redirect($path[0].'?msg=error');
 			  	}
 		  }
 		  else
   	 	 {
-	  		redirect($this->agent->referrer().'?msg=success');
+  	 	 	$path=explode('?', $this->agent->referrer());
+	  		redirect($path[0].'?msg=error');
 	     }
 	  }	
 	  else
 	  {
-	  	redirect($this->agent->referrer().'?msg=success');
+	  	$path=explode('?', $this->agent->referrer());
+	  	redirect($path[0].'?msg=error');
 	  }	
 	   
 
@@ -189,7 +194,9 @@ class Cart extends CI_Controller
 	}
 
 function checkout(){
-	$this->load->template('checkout');  
+	$data['payment']=$this->adminconfig_config->getpaymentmethod();
+	$data['shipment']=$this->adminconfig_config->getshipmethod();
+	$this->load->template('checkout',$data);  
 }
 
 function placeorder()
@@ -202,7 +209,7 @@ function placeorder()
 		if(!empty($postdata))
 		  {
 			if ($this->form_validation->run() == TRUE){
-					if($this->checkout_cart_cart->placeorder($postdata))
+					if($this->checkout_cart->placeorder($postdata))
 				  	{
 				  		$result['status']=1;
 				  	}

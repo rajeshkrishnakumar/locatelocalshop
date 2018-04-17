@@ -62,6 +62,7 @@ $route['logout']='customer/account/logout'	;
 $route['cart']='checkout/cart/getquoteitem'	;
 $route['cart/add']='checkout/cart/addproduct'	;
 $route['checkout']='checkout/cart/checkout';
+$route['placeorder']='checkout/cart/placeorder';
 $route['customer/account']='customer/account/customerview';
 $route['customer/address/delete/(:any)']='customer/account/customeraddressdelete/$1';
 $route['customer/address/add']='customer/account/addaddress';
