@@ -66,3 +66,5 @@ $route['customer/account']='customer/account/customerview';
 $route['customer/address/delete/(:any)']='customer/account/customeraddressdelete/$1';
 $route['customer/address/add']='customer/account/addaddress';
 $route['customer/address/edit/(:any)']='customer/account/editaddress/$1';
+$route['backend']='admin/account/adminloginview';
+$route['dashboard']='admin/account/dashboard';

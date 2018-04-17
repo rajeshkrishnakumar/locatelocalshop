@@ -8,6 +8,25 @@ class Account extends CI_Controller
         $this->load->helper('url_helper');
     }
 
+    public function adminloginview(){
+    	 if (!$this->session->userdata("admin")['user_id']) {   
+    	 $this->load->view('admin/login');
+    	 $this->load->view('admin/footer');	 
+    	}else{
+    		redirect('dashboard');
+    	}
+    }
+
+    public function dashboard(){
+    	if ($this->session->userdata("admin")['user_id']) {    	
+    	 $this->load->view('admin/header');
+    	 $this->load->view('admin/dashboard');
+    	 $this->load->view('admin/footer');
+    	}else{
+    	show_404();
+    	}
+    }
+
 
     public function adminlogin()
 	{
