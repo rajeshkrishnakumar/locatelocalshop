@@ -89,7 +89,6 @@
 							 <?php } ?> 
 						</tbody>
 					</table>
-					<a href="">Place Order</a>
 				</div>
 			</div>
 			<?php

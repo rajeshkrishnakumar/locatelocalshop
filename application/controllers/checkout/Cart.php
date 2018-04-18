@@ -194,9 +194,13 @@ class Cart extends CI_Controller
 	}
 
 function checkout(){
+	if($this->session->userdata("user") && $this->session->userdata("quote")['quote_id'] ){
 	$data['payment']=$this->adminconfig_config->getpaymentmethod();
 	$data['shipment']=$this->adminconfig_config->getshipmethod();
 	$this->load->template('checkout',$data);  
+	}else{
+		redirect('cart');
+	}
 }
 
 function placeorder()
@@ -204,11 +208,11 @@ function placeorder()
 		$postdata=$this->input->post();
 		
 
-        $this->form_validation->set_rules('shipment_method', 'Shipment Method', 'required');       
-        $this->form_validation->set_rules('payment_method', 'Payment Method', 'required');
+        $this->form_validation->set_rules('shipping', 'Shipment Method', 'required');       
+        $this->form_validation->set_rules('payment', 'Payment Method', 'required');
 		if(!empty($postdata))
 		  {
-			if ($this->form_validation->run() == TRUE){
+			if ($this->form_validation->run() == TRUE){				 
 					if($this->checkout_cart->placeorder($postdata))
 				  	{
 				  		$result['status']=1;

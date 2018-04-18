@@ -671,20 +671,19 @@ jQuery('#checkout').validate({
                 }
     },
     messages :{
-      first_name : {
+      payment : {
        required:"Please enter a valid name"
       }   ,
-     last_name : "Please enter a valid name"       
+     shipping : "Please enter a valid name"       
     },
 
     submitHandler: function (form) {
        jQuery.ajax({
                 url: URL + "placeorder",
                 type: "POST",
-                data: jQuery("#custprofile").serializeArray(),
+                data: jQuery("#checkout").serializeArray(),
                 success: function(transport){
-                 var result=JSON.parse(transport);
-                  
+                 var result=JSON.parse(transport);                  
                     if(result.status==1){
                       jQuery('#checkoutsucessmsg').html('<strong>Oh yes!</strong> Order Placed');
                       jQuery('#checkoutsucessmsg').show();

@@ -573,19 +573,26 @@ function getquoteproduct(){
 }
 
 function placeorder($data){
-	if($this->session->userdata("user")){
+	 
+	if($this->session->userdata("user") && $this->session->userdata("quote")['quote_id'] ){
 		 $this->db->from('sales_quote');
 		 $this->db->where('sales_quote.customer_id', $this->session->userdata("user")['user_id']);
 		 $this->db->where('sales_quote.is_active', 1);
 		 $this->db->where('sales_quote.entity_id', $this->session->userdata("quote")['quote_id']);	
 		 $orderitemfetchquery = $this->db->get();
 	     $orderitemdata=$orderitemfetchquery->first_row('array');
-	     $orderitemdata['payment_method']=$data['payment_method'];
-	     $orderitemdata['shipment_method']=$data['shipment_method'];
-	     $orderitemdata['status']='processing';
-	     unset($orderitemdata['entity_id']);
-	     unset($orderitemdata['is_active']);
-	     $orderitemquery = $this->db->insert('sales_order',$orderitemdata);
+         $adddata['vendor_id']=$orderitemdata['vendor_id'];
+         $adddata['items_count']=$orderitemdata['items_count'];
+         $adddata['customer_id']=$orderitemdata['customer_id'];
+         $adddata['coupon_code']=$orderitemdata['coupon_code'];
+         $adddata['discount']=$orderitemdata['discount'];
+         $adddata['delivery_charge']=$orderitemdata['delivery_charge'];
+         $adddata['sub_total']=$orderitemdata['sub_total'];
+         $adddata['grant_total']=$orderitemdata['grant_total'];
+	     $adddata['payment_method']=$data['payment'];
+	     $adddata['shipment_method']=$data['shipping'];
+	     $adddata['status']='processing';;
+	     $orderitemquery = $this->db->insert('sales_order',$adddata);
 	     $orderid=$this->db->insert_id();
 	     $orderitemquery_affected_rows = $this->db->affected_rows();
 	     if($orderitemquery_affected_rows){

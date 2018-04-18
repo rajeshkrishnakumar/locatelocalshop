@@ -65,7 +65,7 @@
 										<label class="anim">
 											 
 											<div class="form_group">
-												<input class="btn btn-secondary sbm_btn" id="placeorder" type="submit" value="Place Order">									 
+												<input class="btn btn-secondary sbm_btn" id="placeorder" type="button" value="Place Order">									 
 												</div>
 										</label>
 									</div>
