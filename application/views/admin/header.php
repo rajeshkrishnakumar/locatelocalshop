@@ -99,10 +99,10 @@
                         <li class="nav-label">Order</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Orders</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="email-compose.html">Order</a></li>
-                                <li><a href="email-compose.html">Order Items</a></li>
-                                <li><a href="email-read.html">Quote</a></li>
-                                <li><a href="email-inbox.html">Quote Items</a></li>
+                                <li><a href="<?php echo base_url('backend/orders'); ?>">Order</a></li>
+                                <li><a href="<?php echo base_url('backend/ordersitems'); ?>">Order Items</a></li>
+                                <li><a href="<?php echo base_url('backend/quotes'); ?>">Quote</a></li>
+                                <li><a href="<?php echo base_url('backend/quotesitems'); ?>">Quote Items</a></li>
                             </ul>
                         </li>
                         <li class="nav-label">Customer</li>

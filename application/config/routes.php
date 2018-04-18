@@ -69,3 +69,7 @@ $route['customer/address/add']='customer/account/addaddress';
 $route['customer/address/edit/(:any)']='customer/account/editaddress/$1';
 $route['backend']='admin/account/adminloginview';
 $route['dashboard']='admin/account/dashboard';
+$route['backend/orders']='admin/adminconfig/orderfetch';
+$route['backend/ordersitems']='admin/adminconfig/orderitemfetch';
+$route['backend/quotes']='admin/adminconfig/quotefetch';
+$route['backend/quotesitems']='admin/adminconfig/quoteitemfetch';
