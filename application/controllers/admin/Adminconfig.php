@@ -243,29 +243,56 @@ class Adminconfig extends CI_Controller
 
      function quotefetch()
 	{
-		 $fetchdata=$this->adminconfig_config->quotefetch();
-	print_r($fetchdata);
+		if ($this->session->userdata("admin")['user_id']) {    	
+		$data['quotes']=$this->adminconfig_config->quotefetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/quote',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}
+
+		  
 	}
 
     function quoteitemfetch()
 	{
-	 $fetchdata=$this->adminconfig_config->quoteitemfetch();
-	print_r($fetchdata);	
-    }
+		if ($this->session->userdata("admin")['user_id']) {    	
+		$data['quotesitems']=$this->adminconfig_config->quoteitemfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/quoteitems',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}
+
+     }
  
 
     function orderfetch()
 	{
-		$fetchdata=$this->adminconfig_config->orderfetch();
-	print_r($fetchdata);	
+		if ($this->session->userdata("admin")['user_id']) {    	
+		$data['orders']=$this->adminconfig_config->orderfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/orders',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}
     }
 
    
 
     function orderitemfetch()
     {
-    	$fetchdata=$this->adminconfig_config->orderitemfetch();
-	print_r($fetchdata);	
+    	if ($this->session->userdata("admin")['user_id']) {    	
+		$data['ordersitems']=$this->adminconfig_config->orderitemfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/orderitems',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}	
     }
 
 
