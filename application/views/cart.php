@@ -81,6 +81,8 @@
 							</tr>
 							</form>
 							<?php } ?>
+						
+
 							 <?php }else{ ?>
 							 <tr>
 							 	<td colspan="5"> No product to show <a href="<?php echo base_url('shoplocator'); ?>">click here </a> to shop </td>
@@ -92,7 +94,57 @@
 				</div>
 			</div>
 			<?php
-								if(isset($product) && is_array($product) && count($product) ){ ?> 
+					if(isset($product) && is_array($product) && count($product) ){ ?> 
+					<hr>
+					<div class="resp-tabs-container hor_1">
+						<form name="cartcoupon" id="cartcoupon">
+						<div>
+							<div class="vertical_post check_box_agile">
+								<h5>Coupon</h5>
+								<div class="checkbox">
+									<div class="check_box_one cashon_delivery">
+										<label class="anim">
+										<input type="text" class="checkbox" name="coupon" >
+										</label>
+										<div style="float: right;">
+											<h5>Price</h5>
+											<table align="center" >
+												<tr>
+												<td><strong>Subtotal</strong></td>
+												<td><?php echo $price['sub_total']; ?></td>
+										     	</tr>
+										     	<tr>
+												<td><strong>Discount</strong></td>
+												<td><?php echo $price['discount']; ?></td>
+										     	</tr>
+										     	<tr>
+												<td><strong>Shipping charge</strong></td>
+												<td><?php echo $price['delivery_charge']; ?></td>
+										     	</tr>
+										     	<tr>
+												<td><strong>Grand Total</strong></td>
+												<td><?php echo $price['grant_total']; ?></td>
+										     	</tr>
+											</table>
+										</div>
+									</div>
+
+
+								</div> 
+								<div class="checkbox">
+									<div class="check_box_one cashon_delivery">
+										<label class="anim">
+											 
+											<div class="form_group">
+												<input class="btn btn-secondary sbm_btn" id="placeorder" type="button" value="Place Order">									 
+												</div>
+										</label>
+									</div>
+
+								</div>
+								</form>
+							</div>							
+
 
 			<div class="checkout-left">
 				<div class="address_form_agile">
@@ -155,6 +207,8 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+
+						
 	</div>
 	<div class="alert alert-danger" role="alert" id="carterrormsg" style="display: none;">
 											 

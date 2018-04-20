@@ -572,6 +572,21 @@ function getquoteproduct(){
 	}
 }
 
+function getquoteproductprice(){
+
+	if($this->session->userdata("user")){
+			$this->db->select('*')
+			         ->from('sales_quote');			         
+			$this->db->where('sales_quote.entity_id',$this->session->userdata("quote")['quote_id']);
+			$itemfetchquery = $this->db->get();
+			$itemdata=$itemfetchquery->first_row('array');
+			return $itemdata;
+
+	}else{
+		return false;
+	}
+}
+
 function placeorder($data){
 	 
 	if($this->session->userdata("user") && $this->session->userdata("quote")['quote_id'] ){

@@ -186,6 +186,7 @@ class Cart extends CI_Controller
 		
 
 		$data['product']=$this->checkout_cart->getquoteproduct();
+		$data['price']=$this->checkout_cart->getquoteproductprice();
 		$this->load->template('cart',$data);  
 			
 		   
