@@ -7,12 +7,64 @@ class Product extends CI_Controller
         parent::__construct();
         $this->load->model('Admin/admin_product');
         $this->load->helper('url_helper');
+        $this->load->library('upload');
+        $this->load->helper(array('form', 'url'));
     }
+
+    
+		
+    function addproductview()
+    {
+    	if ($this->session->userdata("admin")['user_id']) {    	
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/addcatalog');
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
+     function addproductassigment()
+    {
+    	if ($this->session->userdata("admin")['user_id']) {    	
+    	$data['product_id']=$this->admin_product->catalogproductfetch();
+    	$data['vendor_id']=	$this->admin_product->vendorfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/productassigment',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
+
 
     function addproduct()
     {
+    	$data=$this->input->post();
+    if($_FILES['image_gallery']['name']){ 
+       $config = array(
+		'upload_path' => "./assets/images/",
+		'allowed_types' => "gif|jpg|png|jpeg",
+		'overwrite' => TRUE,
+		'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+		'max_height' => "768",
+		'max_width' => "1024"
+		);
+       $this->upload->initialize($config);		
+	  if(!$this->upload->do_upload('image_gallery'))  
+	        {  
+	            $result['status']=$this->upload->display_errors(); 
+	            echo json_encode($result);
+  				exit; 
+	        }  
+	        else  
+	        {  
+	             $postdata = $this->upload->data();
+		         $data['image_gallery']=$postdata["file_name"];
+	        }  	
 
-	  $data=$this->input->post();
+	   }		  
 	  $result=array();
 	  if(!empty($data))
 	  {
@@ -22,7 +74,8 @@ class Product extends CI_Controller
         $this->form_validation->set_rules('product_desc', 'Product Desc', 'required');
         $this->form_validation->set_rules('brand', 'Brand', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('image_gallery','Image Gallery','required'); 
+        $this->form_validation->set_rules('product_name', 'Product Name', 'required');
+
 
        	  if ($this->form_validation->run() == TRUE){
 		  	  	if($this->admin_product->addproduct($data))

@@ -2,6 +2,68 @@
 
 class Adminconfig_config extends CI_Model
 {
+
+
+
+	function addpromotion($data){
+		if($this->session->userdata("admin")['user_id']){		 
+			$query = $this->db->insert('promotion',$data);
+			$affected_rows = $this->db->affected_rows();
+				if($affected_rows){
+					return true;
+				}
+				else
+				{
+				 	return false;
+				}	
+		}
+		else
+		{
+			return false;
+		} 
+	}
+
+	function updatepromotion($data){
+		if($this->session->userdata("admin")['user_id'] ){
+		  $this->db->where('entity_id', $data['entity_id']);
+	      $query = $this->db->update('promotion',$data);
+		  $affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+	}
+
+	function deletepromotion($data){
+		if($this->session->userdata("admin")['user_id'] ){
+		  $this->db->where('entity_id', $data);
+	      $query = $this->db->delete('promotion');
+		  $affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+	}
+	
+
 	function addshipmentmethod($data){
 		if($this->session->userdata("admin")['user_id']){		 
 			$query = $this->db->insert('shipment_method',$data);
@@ -388,6 +450,29 @@ class Adminconfig_config extends CI_Model
 		} 
 
     }
+
+    function adminuserfetch()
+	{
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		$this->db->from('admin');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+    
 
     function orderstatusupdate($data)
     {

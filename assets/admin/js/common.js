@@ -46,4 +46,272 @@ jQuery('#login').validate({
 
   });
 
+ jQuery('#addproduct').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addproductpost",
+                    type: "POST",
+                    data: new FormData(this),
+                    contentType: false,       
+                    cache: false,             
+                    processData:false, 
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                         jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+ 
+ jQuery('#addproductassignment').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addproductassignmentpost",
+                    type: "POST",
+                    data: jQuery("#addproductassignment").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });   
+
+jQuery('#addpromotion').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addpromotionpost",
+                    type: "POST",
+                    data: jQuery("#addpromotion").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });   
+
+
+jQuery('#addvendor').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addvendorpost",
+                    type: "POST",
+                    data: jQuery("#addvendor").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });   
+
+jQuery('#addadminuser').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addadminuserpost",
+                    type: "POST",
+                    data: jQuery("#addadminuser").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+
+jQuery('#addshipment').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addshipmentpost",
+                    type: "POST",
+                    data: jQuery("#addshipment").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+
+
+jQuery('#addpayment').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "backend/addpaymentpost",
+                    type: "POST",
+                    data: jQuery("#addpayment").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+
+
+
  });
+
+

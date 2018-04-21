@@ -13,6 +13,7 @@ class Admin_productassignment extends CI_Model
 		 	return false;
 		 }
 	}
+
  	
  	function checkvendorid($id)
 	{

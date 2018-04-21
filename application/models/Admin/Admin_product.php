@@ -11,8 +11,52 @@ class Admin_product extends CI_Model
 		 }else{
 		 	return false;
 		 }
-	}
- 
+	} 
+
+	 function vendorfetch()
+	{
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('entity_id,display_name');
+		$this->db->from('vendor');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+    function catalogproductfetch()
+	{
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('entity_id,product_name');
+		$this->db->from('catalog_product');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
 	function addproduct($data)
 	{
 		if(!$this->skucheck($data['sku']) && $this->session->userdata("admin")['user_id'] ){

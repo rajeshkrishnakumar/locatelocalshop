@@ -31,7 +31,7 @@
 				<!--Horizontal Tab-->
 				<div id="parentHorizontalTab">
 					<ul class="resp-tabs-list hor_1">
-						<li>Cash on delivery (COD)</li>						 
+						<li>Payment Info</li>						 
 					</ul>
 					<div class="resp-tabs-container hor_1">
 						<form name="checkout" id="checkout">
@@ -74,14 +74,15 @@
 								</form>
 							</div>
 						</div>
-						<div class="alert alert-success" id="checkoutsucessmsg" role="alert" style="display: none;">
+						
+				</div>
+				<div class="alert alert-success" id="checkoutsucessmsgs" role="alert" style="display: none;">
 											 
 										</div>
 										<div class="alert alert-danger" role="alert" id="checkouterrormsg" style="display: none;">
 
 							 
 					</div>
-				</div>
 				<!--Plug-in Initialisation-->
 			</div>
 		</div>

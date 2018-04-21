@@ -17,6 +17,16 @@ class Account extends CI_Controller
     	}
     }
 
+     public function addadminview(){
+    	 if ($this->session->userdata("admin")['user_id']) {   
+    	  $this->load->view('admin/header');
+    	 $this->load->view('admin/addadminuser');
+    	 $this->load->view('admin/footer');	 
+    	}else{
+    		show_404();
+    	}
+    }
+
     public function dashboard(){
     	if ($this->session->userdata("admin")['user_id']) {    	
     	 $this->load->view('admin/header');

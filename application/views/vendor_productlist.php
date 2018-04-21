@@ -54,13 +54,14 @@ if(isset($_GET['msg'])){
 			 </div>
  	 
 
-	<div class="prds col-lg-20 col-md-24">
+
+					 	<?php foreach ($product as $productkey => $productvalue) { ?>
+				
+					 	<div class="prds col-lg-20 col-md-24">
 	
 		 
 					<div class="list clearfix">
-					 	<?php foreach ($product as $productkey => $productvalue) { ?>
-				
-					 
+
 							<div class="prd_img"><span><img class="img-fluid" src="<?php echo asset_url('images/'.$productvalue['image_gallery']);?>" alt="" /></span></div>
 							<div class="prd_info">
 									<h3><?php echo $productvalue['product_name']; ?></h3>
@@ -80,7 +81,7 @@ if(isset($_GET['msg'])){
 						 
 						 	<?php if($productvalue['qty'] > 0 ) { ?>
 								<div class="prd_add">
-									<form name="addtocart" id="addtocart" action="<?php echo base_url('cart/add'); ?>" method="post">	 
+									<form action="<?php echo base_url('cart/add'); ?>" method="post">	 
 									<div class="qat">
 										<input type="hidden" name="product_id" value="<?php echo $productvalue['product_id']; ?>">
 										<input type="hidden" name="vendor_id" value="<?php echo $productvalue['vendor_id']; ?>">
@@ -91,28 +92,37 @@ if(isset($_GET['msg'])){
 									</div>		
 									<div class="form_group">
 									<input class="btn btn-secondary sbm_btn" type="submit" value="Add to cart">
-									</form>
+									
 									</div>
 									
 								</div>
-
-								<div>
-							
-			 				</div>
-			 			<?php } else { ?>	
+								</form>	
+		 			<?php } else { ?>	
 			 				<span class="no-stk">Out Of Stock</span>
 			 		<?php } ?>		
 					</div>
-						 	 
+					</div>	 	
+					 <div class="prds col-lg-20 col-md-24">
+			 	<hr>
+			 </div> 
 					 <?php	} ?>
-					 
- 			 
+					
+
+ 		<div class="prds col-lg-20 col-md-24">
+			 	<hr>
+			 </div> 	
+
 		<div class="checkout-right-basket">
 						<a href="<?php echo base_url('checkout')?>">Make a Payment
 							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
 						</a>
 					</div>
-	</div>
+	<div class="prds col-lg-20 col-md-24">
+			 	<hr>
+			 </div> 
+
+
+
 </div>
 </div>
 </div>

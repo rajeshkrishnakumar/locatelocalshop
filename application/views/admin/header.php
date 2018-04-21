@@ -108,18 +108,18 @@
                         <li class="nav-label">Customer</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Customer</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="chart-flot.html">Customer Account View</a></li>
-                                 <li><a href="chart-flot.html">Customer Address View</a></li>
+                                <li><a href="<?php echo base_url('backend/customer'); ?>">Customer Account View</a></li>
+                                 <li><a href="<?php echo base_url('backend/customeraddress'); ?>"">Customer Address View</a></li>
                              
                             </ul>
                         </li>
                         <li class="nav-label">Product</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Catalog Product</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-dropdown.html">View catalog product</a></li>
-                                <li><a href="ui-dropdown.html">Add catalog product</a></li>
-                                <li><a href="ui-alert.html">View Vendor Product</a></li>
-                                <li><a href="ui-button.html">Add Vendor Product Assignment</a></li>
+                                <li><a href="<?php echo base_url('backend/catalog'); ?>">View catalog product</a></li>
+                                <li><a href="<?php echo base_url('backend/addproduct'); ?>">Add catalog product</a></li>
+                                <li><a href="<?php echo base_url('backend/vendorcatalog'); ?>">View Vendor Product</a></li>
+                                <li><a href="<?php echo base_url('backend/addproductassigment'); ?>">Add Vendor Product Assignment</a></li>
                                 <li><a href="ui-dropdown.html">View Catagory</a></li>
                                 <li><a href="ui-dropdown.html">Add Catagory</a></li>
                             </ul>
@@ -127,26 +127,26 @@
                         <li class="nav-label">Sales Promotion</li>
 						<li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Promotion</span></a>
                              <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-alert.html">Add Promotion</a></li>
-                                 <li><a href="ui-alert.html">View Promotion</a></li>
+                                <li><a href="<?php echo base_url('backend/addpromotion'); ?>">Add Promotion</a></li>
+                                 <li><a href="<?php echo base_url('backend/promotion') ;?>">View Promotion</a></li>
                             </ul>
                         </li>
                         <li class="nav-label">Vendors</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Vendors</span></a>
                              <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-alert.html">Add Vendors</a></li>
-                                 <li><a href="ui-alert.html">View Vendors</a></li>
+                                <li><a href="<?php echo base_url('backend/addvendor'); ?> ">Add Vendors</a></li>
+                                 <li><a href="<?php echo base_url('backend/vendor'); ?>">View Vendors</a></li>
                             </ul>
                         </li>
                         <li class="nav-label">Admin Config</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Vendors</span></a>
                              <ul aria-expanded="false" class="collapse">
-                                <li><a href="ui-alert.html">Add Shipping method</a></li>
-                                 <li><a href="ui-alert.html">View Shipping method</a></li>
-                                 <li><a href="ui-alert.html">Add Payment method</a></li>
-                                  <li><a href="ui-alert.html">View Payment method</a></li>
-                                   <li><a href="ui-alert.html">Admin users</a></li>
-                                   <li><a href="ui-alert.html">Add Admin users</a></li>
+                                <li><a href="<?php echo base_url('backend/addshipment'); ?>">Add Shipping method</a></li>
+                                 <li><a href="<?php echo base_url('backend/shipment'); ?>">View Shipping method</a></li>
+                                 <li><a href="<?php echo base_url('backend/addpayment'); ?>">Add Payment method</a></li>
+                                  <li><a href="<?php echo base_url('backend/payment') ;?>">View Payment method</a></li>
+                                   <li><a href="<?php echo base_url('backend/adminusers'); ?>">Admin users</a></li>
+                                   <li><a href="<?php echo base_url('backend/addadminuser'); ?>">Add Admin users</a></li>
                             </ul>
                         </li> 
                     </ul>

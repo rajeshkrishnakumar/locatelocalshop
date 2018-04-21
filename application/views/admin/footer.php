@@ -19,10 +19,7 @@
     <!--Custom JavaScript -->
 
 
-    <!-- Amchart -->
-     <script src="<?php echo asset_url('admin/js/lib/morris-chart/raphael-min.js');?>"></script>
-    <script src="<?php echo asset_url('admin/js/lib/morris-chart/morris.js');?>"></script>
-    <script src="<?php echo asset_url('admin/js/lib/morris-chart/dashboard1-init.js');?>"></script>
+    
 
 
 	<script src="<?php echo asset_url('admin/js/lib/calendar-2/moment.latest.min.js');?>"></script>

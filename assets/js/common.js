@@ -685,10 +685,10 @@ jQuery('#checkout').validate({
                 success: function(transport){
                  var result=JSON.parse(transport);                  
                     if(result.status==1){
-                      jQuery('#checkoutsucessmsg').html('<strong>Oh yes!</strong> Order Placed');
-                      jQuery('#checkoutsucessmsg').show();
+                      jQuery('#checkoutsucessmsgs').html('<strong>Oh yes!</strong> Order Placed');
+                      jQuery('#checkoutsucessmsgs').show();
                        setTimeout(function(){
-                       jQuery("#checkoutsucessmsg").hide();
+                       jQuery("#checkoutsucessmsgs").hide();
                        }, 3000);         
                        window.location.href=URL;
                    }else if (result.status==0) {

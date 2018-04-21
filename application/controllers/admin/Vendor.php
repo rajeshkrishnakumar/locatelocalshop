@@ -10,6 +10,16 @@ class Vendor extends CI_Controller
         $this->load->helper('url_helper');
     }
 
+    public function addvendorview(){
+    	if ($this->session->userdata("admin")['user_id']) {    	
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/addvendor');
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
     public function vendorregister()
 	{
 	  $data=$this->input->post();
@@ -29,7 +39,7 @@ class Vendor extends CI_Controller
         $this->form_validation->set_rules('state', 'State', 'required');
         $this->form_validation->set_rules('display_name', 'Display Name', 'required');
         $this->form_validation->set_rules('pincode', 'Pincode ', 'required|regex_match[/^[0-9]{6}$/]');
-        $this->form_validation->set_rules('category', 'Category ', 'required');
+        //$this->form_validation->set_rules('category', 'Category ', 'required');
 
        	  if ($this->form_validation->run() == TRUE){
        	  	   unset($data['password_conf']);
