@@ -113,7 +113,7 @@ if(isset($_GET['msg'])){
 			 </div> 	
 
 		<div class="checkout-right-basket">
-						<a href="<?php echo base_url('checkout')?>">Make a Payment
+						<a href="<?php echo base_url('cart')?>">View Cart
 							<span class="fa fa-hand-o-right" aria-hidden="true"></span>
 						</a>
 					</div>

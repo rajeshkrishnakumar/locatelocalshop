@@ -13,7 +13,7 @@
         </script>
 
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>LSS - Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url('admin/css/lib/bootstrap/bootstrap.min.css');?>" rel="stylesheet">
     <!-- Custom CSS -->
@@ -46,12 +46,17 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>">
                         <!-- Logo icon -->
-                        <b><img src="<?php echo asset_url('admin/images/logo.png');?>" alt="homepage" class="dark-logo" /></b>
+                        <b><a href="http://local.locatelocalshop.com/">
+                        <span style="color: #FF5722;">L</span>ocate  
+                       <span style="color: #FF5722;">L</span>ocal 
+                       <span style="color: #FF5722;">S</span>hop
+                        <img src="http://local.locatelocalshop.com/assets/images/logo2.png" alt=" ">
+                    </a></b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
-                        <span><img src="<?php echo asset_url('admin/images/logo-text.png');?>" alt="homepage" class="dark-logo" /></span>
+                       
                     </a>
                 </div>
                 <!-- End Logo -->

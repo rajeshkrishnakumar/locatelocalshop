@@ -18,7 +18,7 @@
 	<div class="privacy">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Payment
+			<h3 class="tittle-w3l">Checkout
 				<span class="heading-style">
 					<i></i>
 					<i></i>

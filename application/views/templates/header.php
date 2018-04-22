@@ -5,7 +5,7 @@
 </script>
 <html>
 <head>
-	<title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+	<title>Locate Local Shop an Ecommerce Category| Home </title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -45,8 +45,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 logo_agile">
 				<h1>
 					<a href="<?php echo base_url() ?>">
-						<span>G</span>rocery
-						<span>S</span>hoppy
+						<span>L</span>ocate  
+						<span>L</span>ocal 
+						<span>S</span>hop
 						<img src="<?php echo asset_url('images/logo2.png');?>" alt=" ">
 					</a>
 				</h1>

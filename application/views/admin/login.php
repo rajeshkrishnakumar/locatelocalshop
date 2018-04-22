@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <title>LLS - Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo asset_url('admin/css/lib/bootstrap/bootstrap.min.css');?>" rel="stylesheet">
     <script type="text/javascript">
