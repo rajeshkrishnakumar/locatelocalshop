@@ -56,6 +56,20 @@ class Adminconfig extends CI_Controller
 	
 	}
 
+	public function editupdatepromotionfetch(){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->adminconfig_config->editupdatepromotionfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editpromotion']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editpromotion',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}
+	}
+
 	public function updatepromotion(){
 
 	  $data=$this->input->post();
@@ -63,10 +77,10 @@ class Adminconfig extends CI_Controller
 	  if(!empty($data))
 	  {
 
-        $this->form_validation->set_rules('coupon_code', 'Coupon Code', 'required|is_unique[promotion.coupon_code]');
+        $this->form_validation->set_rules('coupon_code', 'Coupon Code', 'required');
         $this->form_validation->set_rules('discount_price', 'Discount price', 'required');
          $this->form_validation->set_rules('is_active', 'Is active', 'required');
-         $this->form_validation->set_rules('from_date', 'From Data', 'required');
+         $this->form_validation->set_rules('from_date', 'From Date', 'required');
        	  if ($this->form_validation->run() == TRUE){
 		  	  	if($this->adminconfig_config->updatepromotion($data))
 			  	{
@@ -102,20 +116,19 @@ class Adminconfig extends CI_Controller
 
     	  	if($this->adminconfig_config->deletepromotion($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/promotion'); 
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		 redirect('dashboard'); 
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	 redirect('dashboard'); 	
 	  }	
-	  echo json_encode($result);
-	  exit;
+	   
 	
 
 	
@@ -165,6 +178,20 @@ class Adminconfig extends CI_Controller
 	
 	}
 
+	public function editshipmentmethodfetch(){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->adminconfig_config->editshipmentmethodfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['shipment']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editshipment',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}	
+	}
+
 
     function updateshipmentmethod()
     {
@@ -199,36 +226,33 @@ class Adminconfig extends CI_Controller
 	  }	
 	  echo json_encode($result);
 	  exit;
-	
-
-	
+    
     }
+
 
      function deleteshipmentmethod()
     {
 
 
       $data=$this->uri->segment(4);
-	  $result=array();
 	  if(!empty($data))
 	  {
 
     	  	if($this->adminconfig_config->deleteshipmentmethod($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/shipment'); 
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		redirect('dashboard'); 
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  		redirect('dashboard'); 
 	  }	
-	  echo json_encode($result);
-	  exit;
+	  
 	
 
 	
@@ -278,6 +302,21 @@ class Adminconfig extends CI_Controller
 	
 	}
 
+	public function editpaymentmethodfetch(){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->adminconfig_config->editpaymentmethodfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['payment']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editpayment',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}	
+	}
+
+
 
     function updatepaymentmethod()
     {
@@ -322,26 +361,25 @@ class Adminconfig extends CI_Controller
 
 
       $data=$this->uri->segment(4);
-	  $result=array();
 	  if(!empty($data))
 	  {
 
     	  	if($this->adminconfig_config->deletepaymentmethod($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/shipment'); 
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		redirect('dashboard'); 
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	redirect('dashboard'); 
 	  }	
-	  echo json_encode($result);
-	  exit;
+	  
+	 
 	
 
 	
@@ -511,6 +549,18 @@ class Adminconfig extends CI_Controller
     	 }else{
     	show_404();
     	}	
+    }
+
+    function orderstatusfetch()
+    {
+    	if ($this->session->userdata("admin")['user_id']) {    	
+		 $data['orderid']=$this->adminconfig_config->orderstatusfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/orderstatus',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}
     }
 
     function orderstatusupdate()

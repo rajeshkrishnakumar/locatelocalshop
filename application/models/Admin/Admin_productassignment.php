@@ -42,7 +42,31 @@ class Admin_productassignment extends CI_Model
 		 }
 
 	}
- 
+ 	
+
+ 	 function editcatalogproductfetch($data)
+	{
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('vendor_product');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+    
 
 	function addproductassignment($data)
 	{

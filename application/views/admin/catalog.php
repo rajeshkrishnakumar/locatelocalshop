@@ -35,6 +35,8 @@
                                                 <th>Image Gallery</th>
                                                  <th>Status</th>
                                                  <th>Created At</th> 
+                                                 <th>Edit</th>
+                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -49,6 +51,8 @@
                                                 <th>Image Gallery</th>
                                                  <th>Status</th>
                                                  <th>Created At</th>
+                                                 <th>Edit</th>
+                                                 <th>Delete</th>
                                                  
                                             </tr>
                                         </tfoot>
@@ -67,7 +71,9 @@
                                                         <td><?php echo $catalogvalue['brand']; ?></td>
                                                         <td><img height="200" width="200" src="<?php echo asset_url('images/'.$catalogvalue['image_gallery']);?>"><?php echo $catalogvalue['image_gallery']; ?></td>
                                                         <td><?php echo $catalogvalue['status']; ?></td>
-                                                         <td><?php echo $catalogvalue['created_at']; ?></td>                                                   
+                                                        <td><?php echo $catalogvalue['created_at']; ?></td>  
+                                                        <td><a href="<?php echo base_url().'backend/product/edit/'.$catalogvalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/product/delete/'.$catalogvalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                                   
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>

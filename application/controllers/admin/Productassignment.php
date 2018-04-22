@@ -7,6 +7,7 @@ class Productassignment extends CI_Controller
         parent::__construct();
         $this->load->model('Admin/admin_productassignment');
         $this->load->helper('url_helper');
+           $this->load->model('Admin/admin_product');
     }
 
     public function addproductassignment()
@@ -47,6 +48,24 @@ class Productassignment extends CI_Controller
     	 
     
     }
+
+    public function editcatalogproductfetch($value=''){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->admin_productassignment->editcatalogproductfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editproduct']=$productdatafetch;	
+		$data['product_id']=$this->admin_product->catalogproductfetch();
+    	$data['vendor_id']=	$this->admin_product->vendorfetch();
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editproductassignment',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}
+
+	}
+
 
     public function updateproductassignment()
     {
@@ -92,27 +111,25 @@ class Productassignment extends CI_Controller
     {
 
 
-	  $data=$this->uri->segment(5);
-	  $result=array();
+	  $data=$this->uri->segment(4);
 	  if(!empty($data))
 	  {
 
     	  	if($this->admin_productassignment->deleteproductassignment($data))
 		  	{
-		  		$result['status']=1;
+		  	redirect('backend/vendorcatalog');
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		 		redirect('/');
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	redirect('/');
 	  }	
-	  echo json_encode($result);
-	  exit;
+	    
 	
 
 	

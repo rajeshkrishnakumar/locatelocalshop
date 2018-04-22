@@ -39,6 +39,28 @@ class Admin_vendor extends CI_Model
 
 	}
 
+	public function editupdateadminfetch($data){
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('vendor');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+	}
+
 	function vendorprofileupdate($data)
 	{
 		if($this->emailcheck($data['email']) && $this->session->userdata("admin")['user_id'] ){

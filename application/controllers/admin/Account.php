@@ -96,6 +96,20 @@ class Account extends CI_Controller
 	  exit;
 	}
 
+	public function editupdateadminfetch(){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->admin_account->editupdateadminfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editadmin']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editadmin',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}	
+	}
+
 	public function updateprofile()
 	{
 
@@ -136,30 +150,39 @@ class Account extends CI_Controller
 
 	public function deleteprofile()
 	{
-	   $data=$this->uri->segment(5);
-	  $result=array();
+	   $data=$this->uri->segment(4);
 	  if(!empty($data))
 	  {
 
     	  	if($this->admin_account->deleteprofile($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/adminusers');
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		redirect('dashboard');
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	redirect('dashboard');
 	  }	
-	  echo json_encode($result);
-	  exit;
+	   
 	
 
 	}
+
+	 public function changepasswordview(){
+    	 if ($this->session->userdata("admin")['user_id']) {   
+    	 $this->load->view('admin/header');
+    	 $this->load->view('admin/changepassword');
+    	 $this->load->view('admin/footer');	 
+    	}else{
+    		redirect('dashboard');
+    	}
+    }
+
 
 	public function changepassword()
 	{
@@ -189,9 +212,9 @@ class Account extends CI_Controller
 	{
 		if($this->admin_account->logout())
 		{
-			redirect('Welcome');
+			redirect('backend');
 		}else{
-			redirect('Welcome');
+			redirect('backend');
 		}
 	}
 

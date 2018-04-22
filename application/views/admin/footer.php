@@ -6,7 +6,7 @@
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
-    <script src="<?php echo asset_url('admin/js/lib/jquery/jquery.min.js');?>"></script>
+   
     <!-- Bootstrap tether Core JavaScript -->
     <script src="<?php echo asset_url('admin/js/lib/bootstrap/js/popper.min.js');?>"></script>
     <script src="<?php echo asset_url('admin/js/lib/bootstrap/js/bootstrap.min.js');?>"></script>

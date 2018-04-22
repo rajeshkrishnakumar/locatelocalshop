@@ -32,6 +32,8 @@
                                                 <th>From date</th>
                                                 <th>To date</th>
                                                 <th>User per customer</th>
+                                                <th>Edit</th>
+                                                  <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -43,6 +45,8 @@
                                                 <th>From date</th>
                                                 <th>To date</th>
                                                 <th>User per customer</th>
+                                                 <th>Edit</th>
+                                                  <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -57,7 +61,9 @@
                                                         <td><?php echo $promotionvalue['is_active']; ?></td>
                                                         <td><?php echo $promotionvalue['from_date']; ?></td>
                                                         <td><?php echo $promotionvalue['to_date']; ?></td>
-                                                        <td><?php echo $promotionvalue['use_per_customer']; ?></td>                                       
+                                                        <td><?php echo $promotionvalue['use_per_customer']; ?></td>   
+                                                        <td><a href="<?php echo base_url().'backend/promotion/edit/'.$promotionvalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/promotion/delete/'.$promotionvalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                         
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>

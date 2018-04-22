@@ -24,6 +24,7 @@
     <link href="<?php echo asset_url('admin/css/lib/owl.theme.default.min.css');?>" rel="stylesheet" />
     <link href="<?php echo asset_url('admin/css/helper.css');?>" rel="stylesheet">
     <link href="<?php echo asset_url('admin/css/style.css');?>" rel="stylesheet">
+     <script src="<?php echo asset_url('admin/js/lib/jquery/jquery.min.js');?>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -75,7 +76,7 @@
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li><a href="#"><i class="ti-user"></i> Profile</a></li>                                 
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="<?php echo base_url('backend/logout'); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -101,6 +102,7 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url('backend/orders'); ?>">Order</a></li>
                                 <li><a href="<?php echo base_url('backend/ordersitems'); ?>">Order Items</a></li>
+                                 <li><a href="<?php echo base_url('backend/orderstaus'); ?>">Order Status Change</a></li>
                                 <li><a href="<?php echo base_url('backend/quotes'); ?>">Quote</a></li>
                                 <li><a href="<?php echo base_url('backend/quotesitems'); ?>">Quote Items</a></li>
                             </ul>
@@ -147,6 +149,13 @@
                                   <li><a href="<?php echo base_url('backend/payment') ;?>">View Payment method</a></li>
                                    <li><a href="<?php echo base_url('backend/adminusers'); ?>">Admin users</a></li>
                                    <li><a href="<?php echo base_url('backend/addadminuser'); ?>">Add Admin users</a></li>
+                            </ul>
+                        </li>
+                         <li class="nav-label">Profile</li>
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Change Password</span></a>
+                             <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url('backend/changepassword'); ?>">Change Password</a></li>
+                             
                             </ul>
                         </li> 
                     </ul>

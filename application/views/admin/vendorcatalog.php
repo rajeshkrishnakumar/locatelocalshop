@@ -34,6 +34,8 @@
                                                 <th>Price</th>
                                                  <th>Status</th>
                                                  <th>Special price</th> 
+                                                 <th>Edit</th> 
+                                                 <th>Delete</th> 
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -47,6 +49,8 @@
                                                 <th>Price</th>
                                                  <th>Status</th>
                                                  <th>Special price</th> 
+                                                 <th>Edit</th> 
+                                                 <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -63,7 +67,9 @@
                                                         <td><?php echo $vendorcatalogvalue['meta_desc']; ?></td>
                                                         <td><?php echo $vendorcatalogvalue['price']; ?></td>
                                                         <td><?php echo $vendorcatalogvalue['status']; ?></td>
-                                                         <td><?php echo $vendorcatalogvalue['special_price']; ?></td>                                                 
+                                                         <td><?php echo $vendorcatalogvalue['special_price']; ?></td>   
+                                                          <td><a href="<?php echo base_url().'backend/productassignment/edit/'.$vendorcatalogvalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/productassignment/delete/'.$vendorcatalogvalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                                 
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>

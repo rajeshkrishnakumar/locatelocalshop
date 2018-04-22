@@ -31,6 +31,8 @@
                                                 <th>Email</th>
                                                 <th>Mobile</th>                                      
                                                 <th>Created at</th>
+                                                 <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -41,6 +43,8 @@
                                                 <th>Email</th>
                                                 <th>Mobile</th>                                      
                                                 <th>Created at</th>
+                                                 <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -54,7 +58,9 @@
                                                         <td><?php echo $adminuservalue['last_name']; ?></td>
                                                         <td><?php echo $adminuservalue['email']; ?></td>
                                                         <td><?php echo $adminuservalue['mobile']; ?></td>                                                    
-                                                        <td><?php echo $adminuservalue['created_at']; ?></td>                                       
+                                                        <td><?php echo $adminuservalue['created_at']; ?></td> 
+                                                         <td><a href="<?php echo base_url().'backend/adminuser/edit/'.$adminuservalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/adminuser/delete/'.$adminuservalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                            
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>

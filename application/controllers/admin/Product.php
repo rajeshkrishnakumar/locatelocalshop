@@ -102,11 +102,49 @@ class Product extends CI_Controller
     	 
     }
 
+    public function editproduct($value=''){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->admin_product->editcatalogproductfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editproduct']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editcatalog',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}
+
+	}
+
     function updateproduct()
     {
 
 
 	  $data=$this->input->post();
+	  if($_FILES['image_gallery']['name']){ 
+       $config = array(
+		'upload_path' => "./assets/images/",
+		'allowed_types' => "gif|jpg|png|jpeg",
+		'overwrite' => TRUE,
+		'max_size' => "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+		'max_height' => "768",
+		'max_width' => "1024"
+		);
+       $this->upload->initialize($config);		
+	  if(!$this->upload->do_upload('image_gallery'))  
+	        {  
+	            $result['status']=$this->upload->display_errors(); 
+	            echo json_encode($result);
+  				exit; 
+	        }  
+	        else  
+	        {  
+	             $postdata = $this->upload->data();
+		         $data['image_gallery']=$postdata["file_name"];
+	        }  	
+
+	   }		  
 	  $result=array();
 	  if(!empty($data))
 	  {
@@ -115,7 +153,7 @@ class Product extends CI_Controller
         $this->form_validation->set_rules('product_desc', 'Product Desc', 'required');
         $this->form_validation->set_rules('brand', 'Brand', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('image_gallery','Image Gallery','required'); 
+        $this->form_validation->set_rules('product_name', 'Product Name', 'required');
 
 
        	if ($this->form_validation->run() == TRUE){
@@ -148,18 +186,19 @@ class Product extends CI_Controller
     {
 
 
-	  $data=$this->uri->segment(5);
+	  $data=$this->uri->segment(4);
 	  $result=array();
 	  if(!empty($data))
 	  {
 
     	  	if($this->admin_product->deleteproduct($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/catalog');
+
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		redirect('/');
 		  	}
 	
 	  }	

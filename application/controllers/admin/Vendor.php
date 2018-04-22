@@ -65,6 +65,20 @@ class Vendor extends CI_Controller
 	  exit;
 	}
 
+	public function editupdatevendorfetch(){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->admin_vendor->editupdatevendorfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editvendor']=$productdatafetch;	
+		 $this->load->view('admin/header');
+    	 $this->load->view('admin/edit/editvendor',$data);
+    	 $this->load->view('admin/footer');	 
+		}else{
+			redirect('/');
+		}	
+	}
+
 	public function vendorprofileupdate()
 	{
 
@@ -83,7 +97,7 @@ class Vendor extends CI_Controller
         $this->form_validation->set_rules('state', 'State', 'required');
         $this->form_validation->set_rules('pincode', 'Pincode ', 'required|regex_match[/^[0-9]{6}$/]');
         $this->form_validation->set_rules('display_name', 'Display Name', 'required');
-        $this->form_validation->set_rules('category', 'Category ', 'required');
+        //$this->form_validation->set_rules('category', 'Category ', 'required');
        	if ($this->form_validation->run() == TRUE){
 		  	  	if($this->admin_vendor->vendorprofileupdate($data))
 			  	{
@@ -111,27 +125,27 @@ class Vendor extends CI_Controller
 
 	public function vendorprofiledelete()
 	{
-	   $data=$this->uri->segment(5);
-	  $result=array();
+	   $data=$this->uri->segment(4);
+	 
 	  if(!empty($data))
 	  {
 
     	  	if($this->admin_vendor->vendorprofiledelete($data))
 		  	{
-		  		$result['status']=1;
+		  		redirect('backend/vendor');
 		  	}
 		  	else
 		  	{
-		  		$result['status']=0;
+		  		redirect('dashboard');
 		  	}
 	
 	  }	
 	  else
 	  {
-	  	$result['status']=2;
+	  	redirect('dashboard');
 	  }	
-	  echo json_encode($result);
-	  exit;
+	  
+	   
 	
 
 	}

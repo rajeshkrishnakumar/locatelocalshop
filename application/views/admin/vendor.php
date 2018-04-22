@@ -38,6 +38,8 @@
                                                 <th>State</th>
                                                 <th>Category</th>
                                                 <th>Created at</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -53,8 +55,8 @@
                                                 <th>Pincode</th>
                                                 <th>City</th>
                                                 <th>State</th>
-                                                <th>Category</th>
-                                                <th>Created at</th>
+                                                 <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -75,7 +77,9 @@
                                                         <td><?php echo $vendorvalue['city']; ?></td> 
                                                         <td><?php echo $vendorvalue['state']; ?></td> 
                                                         <td><?php echo $vendorvalue['category']; ?></td>
-                                                        <td><?php echo $vendorvalue['created_at']; ?></td>                                       
+                                                        <td><?php echo $vendorvalue['created_at']; ?></td>     
+                                                         <td><a href="<?php echo base_url().'backend/vendor/edit/'.$vendorvalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/vendor/delete/'.$vendorvalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                   
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>

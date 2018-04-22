@@ -35,6 +35,30 @@ class Admin_product extends CI_Model
 
     }
 
+    function editcatalogproductfetch($data)
+	{
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('catalog_product');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+
     function catalogproductfetch()
 	{
 		if($this->session->userdata("admin")['user_id'] ){
@@ -80,7 +104,7 @@ class Admin_product extends CI_Model
 	function updateproduct($data)
 	{
 		if($this->skucheck($data['sku']) && $this->session->userdata("admin")['user_id'] ){
-		  $this->db->where('sku', $data['sku']);		  
+		  $this->db->where('entity_id', $data['entity_id']);		  
 		  $query = $this->db->update('catalog_product',$data);
 		  $affected_rows = $this->db->affected_rows();
 			if($affected_rows){

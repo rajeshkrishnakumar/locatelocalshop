@@ -23,6 +23,55 @@ class Adminconfig_config extends CI_Model
 		} 
 	}
 
+	function editupdatepromotionfetch($data){
+
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('promotion');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    
+
+	}
+
+	function orderstatusfetch(){
+
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('entity_id');
+		$this->db->from('sales_order');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    
+
+	}
+
 	function updatepromotion($data){
 		if($this->session->userdata("admin")['user_id'] ){
 		  $this->db->where('entity_id', $data['entity_id']);
@@ -82,6 +131,28 @@ class Adminconfig_config extends CI_Model
 		} 
 	}
 
+	public function editshipmentmethodfetch($data){
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('shipment_method');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+	}
+
 	function updateshipmentmethod($data){
 		if($this->session->userdata("admin")['user_id'] ){
 		  $this->db->where('entity_id', $data['entity_id']);
@@ -139,6 +210,28 @@ class Adminconfig_config extends CI_Model
 		{
 			return false;
 		} 
+	}
+
+	public function editpaymentmethodfetch($data){
+		if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('payment_method');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
 	}
 
 	function updatepaymentmethod($data){

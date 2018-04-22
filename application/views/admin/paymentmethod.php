@@ -28,6 +28,8 @@
                                                 <th>Entity id</th>
                                                 <th>Method name</th>
                                                 <th>Payment Method Info</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -35,6 +37,8 @@
                                               <th>Entity id</th>
                                                 <th>Method name</th>
                                                 <th>Payment Method Info</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -45,7 +49,9 @@
                                                     <tr>
                                                         <td><?php echo $paymentmethodvalue['entity_id']; ?></td>
                                                         <td><?php echo $paymentmethodvalue['method_name']; ?></td>
-                                                        <td><?php echo $paymentmethodvalue['payment_method_info']; ?></td>                                     
+                                                        <td><?php echo $paymentmethodvalue['payment_method_info']; ?></td>  
+                                                         <td><a href="<?php echo base_url().'backend/payment/edit/'.$paymentmethodvalue['entity_id'];  ?>" class="btn btn-info">Edit</a></td>
+                                                            <td><a href="<?php echo base_url().'backend/payment/delete/'.$paymentmethodvalue['entity_id'];  ?>" class="btn btn-danger">Delete</a></td>                                      
                                                     </tr>
                                             <?php  } }else {?>
                                                     <tr>
