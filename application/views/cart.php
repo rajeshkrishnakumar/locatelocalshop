@@ -97,14 +97,14 @@
 					if(isset($product) && is_array($product) && count($product) ){ ?> 
 					<hr>
 					<div class="resp-tabs-container hor_1">
-						<form name="cartcoupon" id="cartcoupon">
+						<form name="cartcoupon" id="cartcoupon" method="post">
 						<div>
 							<div class="vertical_post check_box_agile">
 								<h5>Coupon</h5>
 								<div class="checkbox">
 									<div class="check_box_one cashon_delivery">
 										<label class="anim">
-										<input type="text" class="checkbox" name="coupon" >
+										<input type="text" class="checkbox" name="coupon_code" >
 										</label>
 										<div style="float: right;">
 											<h5>Price</h5>
@@ -136,15 +136,20 @@
 										<label class="anim">
 											 
 											<div class="form_group">
-												<input class="btn btn-secondary sbm_btn" id="placeorder" type="button" value="Place Order">									 
+												<input class="btn btn-secondary sbm_btn" id="applycoupon" type="button" value="Apply Coupon">	</form>							
+															 <div class="alert alert-success" id="checkoutsucessmsgs1" role="alert" style="display: none;">
+											 
+										</div>
+										<div class="alert alert-danger" role="alert" id="checkouterrormsg1" style="display: none;">
+												</div>	 
 												</div>
 										</label>
 									</div>
 
 								</div>
-								</form>
+								
 							</div>							
-
+</div>
 
 			<div class="checkout-left">
 				<div class="address_form_agile">

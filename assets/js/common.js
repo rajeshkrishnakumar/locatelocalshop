@@ -831,6 +831,61 @@ jQuery('#cartaddress').validate({
 
   });
 
+jQuery('#applycoupon').click(function(){
+  jQuery("#cartcoupon").submit();
+});
+
+jQuery('#cartcoupon').validate({
+
+    errorElement: "span",
+    rules: {
+        coupon_code: {
+          required: true
+                }
+        
+    },
+    messages :{
+      coupon_code : {
+       required:"Please enter a coupon code"
+      }        
+    },
+
+    submitHandler: function (form) {
+       jQuery.ajax({
+                url: URL + "couponpost",
+                type: "POST",
+                data: jQuery("#cartcoupon").serializeArray(),
+                success: function(transport){
+                 var result=JSON.parse(transport);                  
+                    if(result.status==1){
+                      jQuery('#checkoutsucessmsgs1').html('<strong>Oh yes!</strong>  Coupon Code Apply');
+                      jQuery('#checkoutsucessmsgs1').show();
+                       setTimeout(function(){
+                       jQuery("#checkoutsucessmsgs1").hide();
+                       }, 3000);         
+                       window.location.href=URL;
+                   }else if (result.status==0) {
+                    jQuery('#checkouterrormsg1').html('<strong>Oh snap!</strong> Wrong Coupon Code');
+                    jQuery('#checkouterrormsg1').show();
+                     setTimeout(function(){
+                     jQuery("#checkouterrormsg1").hide();
+                     }, 3000);
+                   }else{
+                     jQuery('#checkouterrormsg1').html(result.status);
+                     jQuery('#checkouterrormsg1').show();
+                     setTimeout(function(){
+                     jQuery("#checkouterrormsg1").hide();
+                     }, 3000);
+                    
+                   }              
+               }
+              });
+            
+    
+    }
+
+});
+
 
 });
 

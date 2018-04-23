@@ -126,10 +126,13 @@ class Cart extends CI_Controller
 		  	  	if($this->checkout_cart->checkcouponcode($data))
 			  	{
 			  		$result['status']=1;
+			  		$result['code']=$data;
 			  	}
 			  	else
 			  	{
 			  		$result['status']=0;
+			  		$result['code']=$data;
+
 			  	}
 		  }
 		  else
