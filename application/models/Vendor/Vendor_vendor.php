@@ -80,5 +80,183 @@ class Vendor_vendor extends CI_Model
          $quotedata=$query->result('array');              
          return array_column($quotedata, 'pincode');
 	}
+
+	function getdashboarddata(){
+		 $dashboard=array();
+		 $this->db->select('SUM(sales_order.grant_total) as totalrevenue');	
+		 $this->db->from('sales_order')
+		  				->join('sales_order_item', 'sales_order.entity_id = sales_order_item.order_id');	
+		 $this->db->where('sales_order.status','delivered');
+		 $this->db->where('sales_order_item.vendor_id',$this->session->userdata("vendor")['user_id']); 				
+		 $fetchquery= $this->db->get();
+		 $dashboard['totalrevenue']=$fetchquery->first_row('array');
+		 $this->db->select('COUNT(item_id) as ordercount');
+		 $this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+		 $this->db->from('sales_order_item');	
+		 $fetchquerycount= $this->db->get();
+		 $dashboard['ordercount']=$fetchquerycount->first_row('array');
+		 $this->db->select('COUNT(entity_id) as vendorcount');
+		 $this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+		 $this->db->from('vendor_product');	
+		 $fetchquerycount1= $this->db->get();
+		 $dashboard['vendorcount']=$fetchquerycount1->first_row('array');  
+		
+		 return $dashboard;
+
+	}
+
+	function getlastorderdata(){
+		 $this->db->select("*");
+	     $this->db->from("sales_order");
+	      $this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+		 $this->db->limit(4);
+		 $this->db->order_by('entity_id',"DESC");
+		 $query = $this->db->get();
+		 return $query->result('array');
+	}
+
+	function getlastshiporderdata(){
+
+		 $this->db->select("*");
+		 $this->db->where('status','shipped');
+		  $this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+	     $this->db->from("sales_order");
+		 $this->db->limit(4);
+		 $this->db->order_by('entity_id',"DESC");
+		 $query = $this->db->get();
+		 return  $query->result('array');
+	}
+
+	 function orderitemfetch()
+	{
+		if($this->session->userdata("vendor")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+		$this->db->from('sales_order_item');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+
+     function vendorproductfetch()
+	{
+		if($this->session->userdata("vendor")['user_id'] ){
+		$this->db->select('*');
+		$this->db->where('vendor_id',$this->session->userdata("vendor")['user_id']);
+		$this->db->from('vendor_product');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+
+ 	 function editcatalogproductfetch($data)
+	{
+		if($this->session->userdata("vendor")['user_id'] ){
+		$this->db->select('*');
+		 $this->db->where('entity_id', $data);	
+		$this->db->from('vendor_product');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->first_row('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+
+function updateproductassignment($data)
+	{
+		if($this->session->userdata("vendor")['user_id'] ){
+		$this->db->where('product_id', $data['product_id']);
+		$this->db->where('vendor_id', $data['vendor_id']);		  
+	    $query = $this->db->update('vendor_product',$data);
+	    $affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+ 
+
+	}
+
+
+    function deleteproductassignment($data)
+	{
+		if($this->session->userdata("vendor")['user_id'] ){
+		$this->db->where('entity_id', $data);
+		$query = $this->db->delete('vendor_product');
+	    $affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+ 
+
+	}
+
+	function updatepassword($password){
+		if($this->session->userdata("vendor")){
+		  $data['password']=md5($password);	
+		  $this->db->where('entity_id', $this->session->userdata("admin")['user_id']);
+		  $query = $this->db->update('vendor',$data);
+	      $affected_rows = $this->db->affected_rows();
+	      return true;
+		}else{
+			return false;
+		}
+	}
+
+
 }
 ?>

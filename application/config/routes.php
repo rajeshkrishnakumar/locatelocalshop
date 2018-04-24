@@ -125,4 +125,15 @@ $route['backend/changepassword']='admin/account/changepasswordview';
 $route['backend/changepasswordpost']='admin/account/changepassword';
 
 
+$route['vendor/login']='admin/vendor/vendorloginview';
+$route['vendor/logout']='admin/vendor/logout';
+$route['vendor/dashboard']='vendor/vendor/dashboard';
+$route['vendor/ordersitems']='vendor/vendor/orderitemfetch';
+$route['vendor/vendorcatalog']='vendor/vendor/vendorproductfetch';
+$route['vendor/productassignment/edit/(:any)']='vendor/vendor/editcatalogproductfetch/$1';
+$route['vendor/updateproductassignmentpost']='vendor/vendor/updateproductassignment';
+$route['vendor/productassignment/delete/(:any)']='vendor/vendor/deleteproductassignment/$1';
+$route['vendor/changepassword']='vendor/vendor/changepasswordview';
+$route['vendor/changepasswordpost']='vendor/vendor/changepassword';
+$route['vendor/profile']='vendor/vendor/editupdatevendorfetch';
 

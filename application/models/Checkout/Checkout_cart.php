@@ -496,7 +496,13 @@ function updateamountcoupondiscount($amount,$couponcode)
 	if($quotedata){	 	
 	$discountdata['discount']=$amount;
 	$discountdata['coupon_code']= $couponcode;
-	$discountdata['grant_total']=$quotedata['grant_total']-$amount;
+	$finalamount=$quotedata['grant_total']-$amount;
+	if($finalamount <=0){
+	$discountdata['grant_total']=0;	
+	}else{
+	$discountdata['grant_total']=$finalamount;	
+	}
+	
 	$this->db->where('entity_id', $quote_id);
 
 	$updatequotetotalupdatequotetotal_query = $this->db->update('sales_quote',$discountdata);

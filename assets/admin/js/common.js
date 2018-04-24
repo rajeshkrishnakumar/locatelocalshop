@@ -649,6 +649,129 @@ jQuery('#chgpwd').on('submit', function(e){
 
     });
 
+/** vendor js **/
+jQuery('#vendorloginsubmit').click(function(){
+     jQuery("#vendorlogin").submit();
+});
+
+jQuery('#vendorlogin').validate({
+    errorElement: "span",
+    rules: {
+        email: {
+          email: true,
+          required: true
+                },
+        password: {          
+          required: true
+                }
+    },
+    messages :{
+      email : {
+       email:"Please enter a valid email address",
+       required:"Please enter a valid email address"
+      }   ,
+     password : "Please enter your password"     
+    },
+    submitHandler: function (form) {
+       jQuery.ajax({
+                url: URL + "admin/vendor/vendorlogin",
+                type: "POST",
+                data: jQuery("#vendorlogin").serializeArray(),
+                success: function(transport){
+                 var result=JSON.parse(transport);
+                  
+                   if(result.status==1){
+                       window.location.href=URL+'vendor/dashboard';          
+                   }else{
+                    jQuery('#loginerror').show();
+                     setTimeout(function(){
+                     jQuery("#loginerror").hide();
+                     }, 3000);
+                   }              
+               }
+              });
+            
+    
+    }
+
+  });
+
+jQuery('#editvendorproduct').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "vendor/updateproductassignmentpost",
+                    type: "POST",
+                    data: jQuery("#editvendorproduct").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+
+
+
+jQuery('#vchgpwd').on('submit', function(e){  
+    e.preventDefault();
+
+    jQuery.ajax({
+                    url: URL + "vendor/changepasswordpost",
+                    type: "POST",
+                    data: jQuery("#vchgpwd").serializeArray(),
+                    success: function(transport){
+                     var result=JSON.parse(transport);
+
+                       if(result.status==1){
+                        jQuery('#addsucessmsg').html('Added successfully');
+                         jQuery('#addsucessmsg').show();
+                         setTimeout(function(){
+                         jQuery("#addsucessmsg").hide();
+                         }, 3000);           
+                       }else if (result.status==0) {
+                        jQuery('#adderrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                        jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                       }else{
+                         jQuery('#adderrormsg').html(result.status);
+                         jQuery('#adderrormsg').show();
+                         setTimeout(function(){
+                         jQuery("#adderrormsg").hide();
+                         }, 3000);
+                        
+                       }          
+
+                   }
+                });
+
+
+    });
+
 
  });
 

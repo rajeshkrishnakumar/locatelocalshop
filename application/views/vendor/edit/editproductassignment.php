@@ -6,7 +6,7 @@
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Add Promotion</li>
+                        <li class="breadcrumb-item active">Edit Product</li>
                     </ol>
                 </div>
             </div>
@@ -18,26 +18,26 @@
                     <div class="col-lg-12">
                         <div class="card card-outline-primary">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Add promotion</h4>
-                            </div>
+                                <h4 class="m-b-0 text-white">Edit product</h4>
+                            </div> 
                             <div class="card-body">
-                                <form method="post" name='addpromotion'  id='addpromotion'>
+                                <form method="post" name='editvendorproduct' id='editvendorproduct'>
 
                                     <div class="form-body">
-                                        <h3 class="card-title m-t-15">Promotion Info</h3>
+                                        <h3 class="card-title m-t-15">Product Info</h3>
                                         <hr>
                                         <div class="row p-t-20">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Coupon Code</label>
-                                                    <input type="text" name='coupon_code' id="coupon_code" class="form-control" placeholder="Coupon Code">
-                                                    <small class="form-control-feedback"> Should be unique </small> </div>
+                                                    <label class="control-label">Qty</label>
+                                                    <input type="number" min="1" name='qty' id="qty" class="form-control" placeholder="Qty" value="<?php echo $editproduct['qty']; ?>">
+                                                   </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Discount price</label>
-                                                    <input type="number" min='1' id="discount_price" name='discount_price' class="form-control" placeholder="Discount price">
+                                                    <label class="control-label">Price</label>
+                                                    <input type="number" min='1' id="price" name='price' class="form-control" placeholder="Price" value="<?php echo $editproduct['price']; ?>"    >
                                                 </div>
                                             </div>
                                             <!--/span-->
@@ -46,45 +46,36 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">From Date</label>
-                                                    <input type="date" name='from_date' class="form-control" placeholder="yyyy/mm/dd">
+                                                    <label class="control-label">Vendor ID</label>
+                                                              <input type="number" min='1' id="price" name='vendor_id' class="form-control" placeholder="Price" value="<?php echo $editproduct['vendor_id']; ?>"   readonly >
                                                 </div>
                                             </div>
                                             <!--/span-->
                                             <div class="col-md-6">
-                                                  <div class="form-group">
-                                                    <label class="control-label">To Date</label>
-                                                    <input type="date" name='to_date' class="form-control" placeholder="yyyy/mm/dd">
+                                                 <div class="form-group">
+                                                    <label class="control-label">Product ID</label>
+                                                             <input type="number" min='1' id="price" name='product_id' class="form-control" placeholder="Price" value="<?php echo $editproduct['product_id']; ?>"   readonly >
                                                 </div>
                                             </div>
                                             <!--/span-->
                                         </div>
                                         <!--/row-->
-                                         <div class="row p-t-20">
-                                       
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="control-label">Is Active</label>
-                                                    <select class="form-control " name='is_active' id='is_active' data-placeholder="Choose a Active" tabindex="1">
+                                                    <label class="control-label">Status</label>
+                                                    <select class="form-control " name='status' id='status' data-placeholder="Choose a Status" tabindex="1" >
                                                         <option value="1">Enable</option>
                                                         <option value="0">Disable</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                             
-                                  
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="control-label">Use per customer</label>
-                                                    <select class="form-control " name='use_per_customer' id='use_per_customer' data-placeholder="Choose a use per cutomer" tabindex="1">
-                                                        <option value="1">One per customer</option>
-                                                        <option value="0">Many per cutomer</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                             
-                                        
-                                        </div> 
+                                            <!--/span-->
+                                            
+                                            <!--/span-->
+                                        </div>
+                                        <!--/row-->
+                                         
                                     </div>
                                     <div class="form-actions">
                                         <button type="submit" id='addsubmit' class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
@@ -110,3 +101,8 @@
             </div>
             <!-- End Container fluid  -->
         </div>
+
+        <script type="text/javascript">
+            jQuery('#status').val('<?php echo $editproduct['status']; ?>');
+
+        </script>

@@ -40,7 +40,7 @@ class Admin_vendor extends CI_Model
 	}
 
 	public function editupdateadminfetch($data){
-		if($this->session->userdata("admin")['user_id'] ){
+		if($this->session->userdata("admin")['user_id'] || $this->session->userdata("vendor")['user_id']){
 		$this->db->select('*');
 		 $this->db->where('entity_id', $data);	
 		$this->db->from('vendor');		 
@@ -63,7 +63,7 @@ class Admin_vendor extends CI_Model
 
 	function vendorprofileupdate($data)
 	{
-		if($this->emailcheck($data['email']) && $this->session->userdata("admin")['user_id'] ){
+		if($this->emailcheck($data['email']) && $this->session->userdata("admin")['user_id'] || $this->session->userdata("vendor")['user_id'] ){
 		  $this->db->where('email', $data['email']);
 		  $data['updated_at']=date('Y-m-d H:i:s');
 		  $query = $this->db->update('vendor',$data);

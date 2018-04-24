@@ -10,6 +10,7 @@ class Vendor extends CI_Controller
 	{
 		parent::__construct();
         $this->load->model('Vendor/vendor_vendor');
+        $this->load->model('Admin/admin_vendor');
         $this->load->helper('url_helper');
 		 
 	}
@@ -107,6 +108,175 @@ class Vendor extends CI_Controller
 	  }	
 	 
 	}
+
+	public function dashboard(){
+    	if ($this->session->userdata("vendor")['user_id']) {    	
+    	 $data['dashboard']=$this->vendor_vendor->getdashboarddata();
+    	 $data['lastorder']=$this->vendor_vendor->getlastorderdata();
+    	 $data['shiporder']=$this->vendor_vendor->getlastorderdata();
+    	 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/dashboard',$data);
+    	 $this->load->view('vendor/footer');
+    	}else{
+    	show_404();
+    	}
+    
+	}
+
+	function orderitemfetch()
+    {
+    	if ($this->session->userdata("vendor")['user_id']) {    	
+		$data['ordersitems']=$this->vendor_vendor->orderitemfetch();
+	 	 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/orderitems',$data);
+    	 $this->load->view('vendor/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
+     function vendorproductfetch()
+    {
+    	if ($this->session->userdata("vendor")['user_id']) {    	
+		 $data['vendorcatalog']=$this->vendor_vendor->vendorproductfetch();
+	 	 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/vendorcatalog',$data);
+    	 $this->load->view('vendor/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
+    public function editcatalogproductfetch($value=''){
+		$productdata=$this->uri->segment(4);	
+		$productdatafetch=$this->vendor_vendor->editcatalogproductfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editproduct']=$productdatafetch;	
+		 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/edit/editproductassignment',$data);
+    	 $this->load->view('vendor/footer');	 
+		}else{
+			redirect('/');
+		}
+
+	}
+
+	public function updateproductassignment()
+    {
+
+	  $data=$this->input->post();
+	  $result=array();
+	  if(!empty($data))
+	  {
+
+        $this->form_validation->set_rules('vendor_id', 'Vendor Id', 'required');
+        $this->form_validation->set_rules('product_id', 'Product Id', 'required');
+        $this->form_validation->set_rules('qty', 'Qty', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
+       	  if ($this->form_validation->run() == TRUE){
+		  	  	if($this->vendor_vendor->updateproductassignment($data))
+			  	{
+			  		$result['status']=1;
+			  	}
+			  	else
+			  	{
+			  		$result['status']=0;
+			  	}
+		  }
+		  else
+  	 	 {
+	  		$result['status']=validation_errors();
+	     }
+	  }	
+	  else
+	  {
+	  	$result['status']=2;
+	  }	
+	  echo json_encode($result);
+	  exit;
+	
+    	 
+    
+    }
+
+	function deleteproductassignment()
+    {
+
+
+	  $data=$this->uri->segment(4);
+	  if(!empty($data))
+	  {
+
+    	  	if($this->vendor_vendor->deleteproductassignment($data))
+		  	{
+		  	redirect('vendor/vendorcatalog');
+		  	}
+		  	else
+		  	{
+		 		redirect('/');
+		  	}
+	
+	  }	
+	  else
+	  {
+	  	redirect('/');
+	  }	
+	    }
+
+	 public function changepasswordview(){
+    	 if ($this->session->userdata("vendor")['user_id']) {   
+    	 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/changepassword');
+    	 $this->load->view('vendor/footer');	 
+    	}else{
+    		redirect('dashboard');
+    	}
+    }
+
+
+	public function changepassword()
+	{
+	  $data=$this->input->post();
+	  $result=array();
+	  if(!empty($data))	{
+		$this->form_validation->set_rules('password', 'Password', 'required');
+	    $this->form_validation->set_rules('password_conf', 'Password Confirmation', 'required|matches[password]');
+	    if($this->form_validation->run() == TRUE){
+			if($this->vendor_vendor->updatepassword($data['password']))
+			{
+				$result['status']=1;
+			}else{
+				$result['status']=0;
+			}
+		}else{
+			$result['status']=validation_errors();
+		}	
+	  }
+
+	   echo json_encode($result);
+	  exit;
+	   	
+	}    
+
+	public function editupdatevendorfetch(){
+		$productdata=$this->session->userdata("vendor")['user_id'];	
+		$productdatafetch=$this->admin_vendor->editupdateadminfetch($productdata);
+		if($productdatafetch)
+		{
+		$data['editvendor']=$productdatafetch;	
+		 $this->load->view('vendor/header');
+    	 $this->load->view('vendor/edit/editvendor',$data);
+    	 $this->load->view('vendor/footer');	 
+		}else{
+			redirect('/');
+		}	
+	}
+
+
+
+
 }
 
 ?>

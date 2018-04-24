@@ -25,7 +25,6 @@
 					<i></i>
 				</span>
 			</h3>
-
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<!--Horizontal Tab-->
@@ -47,7 +46,7 @@
 									</div>
 
 								</div>
-
+								<?php if($total['grant_total']!='0.0000'){ ?>	
 								<h5>Payment</h5>
 								<div class="checkbox">
 									<div class="check_box_one cashon_delivery">
@@ -60,6 +59,19 @@
 									</div>
 
 								</div>
+							<?php }else{ ?>
+								<div class="checkbox" style="display: none;">
+									<div class="check_box_one cashon_delivery">
+										<label class="anim">
+											<input type="checkbox" class="checkbox" name="payment" checked value="<?php echo $payment[0]['method_name']; ?> ">
+											<span> <?php echo $payment[0]['payment_method_info'] ?></span>
+
+										 
+										</label>
+									</div>
+
+								</div>
+							<?php	} ?>
 								<div class="checkbox">
 									<div class="check_box_one cashon_delivery">
 										<label class="anim">

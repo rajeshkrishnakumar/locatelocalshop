@@ -124,7 +124,7 @@ class Admin_account extends CI_Model
 	}
 
 	function updatepassword($password){
-		if($this->session->userdata("user")){
+		if($this->session->userdata("admin")){
 		  $data['password']=md5($password);	
 		  $this->db->where('entity_id', $this->session->userdata("admin")['user_id']);
 		  $query = $this->db->update('admin',$data);

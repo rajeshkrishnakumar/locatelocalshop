@@ -67,7 +67,7 @@ class Vendor extends CI_Controller
 
 	public function editupdatevendorfetch(){
 		$productdata=$this->uri->segment(4);	
-		$productdatafetch=$this->admin_vendor->editupdatevendorfetch($productdata);
+		$productdatafetch=$this->admin_vendor->editupdateadminfetch($productdata);
 		if($productdatafetch)
 		{
 		$data['editvendor']=$productdatafetch;	
@@ -150,13 +150,22 @@ class Vendor extends CI_Controller
 
 	}
 
-	    public function vendorlogin()
+	public function vendorloginview(){
+    	 if (!$this->session->userdata("vendor")['user_id']) {   
+    	 $this->load->view('vendor/login');
+    	 $this->load->view('vendor/footer');	 
+    	}else{
+    		redirect('vendor/dashboard');
+    	}
+    }
+
+	public function vendorlogin()
 	{
 	 $email=$this->input->post('email');
 	 $password=$this->input->post('password'); 
 	 $result=array();
 	  if(!empty($email) && !empty($password)){		 
-		if($this->admin_vendor->adminlogin($email,$password))
+		if($this->admin_vendor->vendorlogin($email,$password))
 		{
 			$result['status']=1;
 		}
@@ -176,11 +185,14 @@ public function logout()
 	{
 		if($this->admin_vendor->logout())
 		{
-			redirect('Welcome');
+			redirect('vendor/login');
 		}else{
-			redirect('Welcome');
+			redirect('vendor/login');
 		}
 	}
+
+
+	
 
 
 }

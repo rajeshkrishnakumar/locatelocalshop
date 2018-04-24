@@ -201,6 +201,7 @@ function checkout(){
 	if($this->session->userdata("user") && $this->session->userdata("quote")['quote_id'] ){
 	$data['payment']=$this->adminconfig_config->getpaymentmethod();
 	$data['shipment']=$this->adminconfig_config->getshipmethod();
+	$data['total']=$this->checkout_cart->getquoteproductprice();
 	$this->load->template('checkout',$data);  
 	}else{
 		redirect('cart');
