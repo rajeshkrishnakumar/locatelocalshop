@@ -4,6 +4,49 @@ class Adminconfig_config extends CI_Model
 {
 
 
+	function getdashboarddata(){
+		 $dashboard=array();
+		 $this->db->select('SUM(sales_order.grant_total) as totalrevenue');		 
+		 $this->db->where('status','delivered');
+		 $this->db->from('sales_order');	
+		 $fetchquery= $this->db->get();
+		 $dashboard['totalrevenue']=$fetchquery->first_row('array');
+		 $this->db->select('COUNT(entity_id) as ordercount');
+		 $this->db->from('sales_order');	
+		 $fetchquerycount= $this->db->get();
+		 $dashboard['ordercount']=$fetchquerycount->first_row('array');
+		 $this->db->select('COUNT(entity_id) as vendorcount');
+		 $this->db->from('vendor');	
+		 $fetchquerycount1= $this->db->get();
+		 $dashboard['vendorcount']=$fetchquerycount1->first_row('array');
+		 $this->db->select('COUNT(entity_id) as customercount');
+		 $this->db->from('customer');	
+		 $fetchquerycount2= $this->db->get();
+		 $dashboard['customercount']=$fetchquerycount2->first_row('array');
+		
+		 return $dashboard;
+
+	}
+
+	function getlastorderdata(){
+		 $this->db->select("*");
+	     $this->db->from("sales_order");
+		 $this->db->limit(4);
+		 $this->db->order_by('entity_id',"DESC");
+		 $query = $this->db->get();
+		 return $query->result('array');
+	}
+
+	function getlastshiporderdata(){
+
+		 $this->db->select("*");
+		 $this->db->where('status','shipped');
+	     $this->db->from("sales_order");
+		 $this->db->limit(4);
+		 $this->db->order_by('entity_id',"DESC");
+		 $query = $this->db->get();
+		 return  $query->result('array');
+	}
 
 	function addpromotion($data){
 		if($this->session->userdata("admin")['user_id']){		 

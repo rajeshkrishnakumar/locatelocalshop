@@ -5,6 +5,7 @@ class Account extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin/admin_account');
+        $this->load->model('Adminconfig/adminconfig_config');
         $this->load->helper('url_helper');
     }
 
@@ -29,8 +30,11 @@ class Account extends CI_Controller
 
     public function dashboard(){
     	if ($this->session->userdata("admin")['user_id']) {    	
+    	 $data['dashboard']=$this->adminconfig_config->getdashboarddata();
+    	 $data['lastorder']=$this->adminconfig_config->getlastorderdata();
+    	 $data['shiporder']=$this->adminconfig_config->getlastorderdata();
     	 $this->load->view('admin/header');
-    	 $this->load->view('admin/dashboard');
+    	 $this->load->view('admin/dashboard',$data);
     	 $this->load->view('admin/footer');
     	}else{
     	show_404();
