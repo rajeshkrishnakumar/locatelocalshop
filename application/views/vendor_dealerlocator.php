@@ -23,14 +23,11 @@
                <h1>Locate a Local Store Near You</h1>
                <br>
                 <form name="dealerlocator" id='dealerlocator' class="clearfix">
-                <div class="loc_srch">
+                <div style="width: 100%" class="loc_srch">
                   <input name='dealerlocation' id='dealerlocation' type="text" placeholder="Enter your location">
                   <a href="javascript:void(0)" id='reset' oncontextmenu="return false;" class="reset rmv_cart_prd" style='display:none'></a>
                   <a href="javascript:void(0)" id='geoloc' oncontextmenu="return false;" class="curnt_locn"></a>
                 </div>
-                  <select id="vendors" name="vendors" class="required-entry select custom-select">
-                   </select>
-                  <button type='button' id='dlsubmit' name='dlsubmit'></button>
                </form>
                <br>
                <br>
