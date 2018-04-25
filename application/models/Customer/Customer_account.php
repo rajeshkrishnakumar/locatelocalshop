@@ -251,6 +251,23 @@ function customeraddressdelete($id){
 
 }
 
+function contactus($data){
+
+		$query = $this->db->insert('contactus',$data);
+		$affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		
+		  
+
+
+}
+
 }
 
 ?>

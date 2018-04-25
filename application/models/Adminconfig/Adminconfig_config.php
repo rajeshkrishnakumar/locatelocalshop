@@ -362,6 +362,50 @@ class Adminconfig_config extends CI_Model
 
 	}
 
+	 function contactusfetch()
+    {
+    	if($this->session->userdata("admin")['user_id'] ){
+		$this->db->select('*');
+		$this->db->from('contactus');		 
+		$itemfetchquery = $this->db->get();
+		$itemdata=$itemfetchquery->result('array');
+			if($itemdata){
+				return $itemdata;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+    function completecontactus($data){
+		if($this->session->userdata("admin")['user_id'] ){
+			$datastatus['status']=1;
+		  $this->db->where('entity_id', $data['entity_id']);
+	      $query = $this->db->update('contactus',$datastatus);
+		  $affected_rows = $this->db->affected_rows();
+			if($affected_rows){
+				return true;
+			}
+			else
+			{
+			 	return false;
+			}	
+		}
+		else
+		{
+			return false;
+		} 
+
+    }
+
+
     function customerfetch()
     {
     	if($this->session->userdata("admin")['user_id'] ){

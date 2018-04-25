@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</h3>
 						<p>Get flat
 							<span>10%</span> Cashback</p>
-						<a class="button2" href="product.html">Shop Now </a>
+						<a class="button2" href="<?php echo base_url('shoplocator'); ?>">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</h3>
 						<p>Get Upto
 							<span>30%</span> Off</p>
-						<a class="button2" href="product.html">Shop Now </a>
+						<a class="button2" href="<?php echo base_url('shoplocator'); ?>">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<p>Get Best Offer Upto
 							<span>20%</span>
 						</p>
-						<a class="button2" href="product.html">Shop Now </a>
+						<a class="button2" href="<?php echo base_url('shoplocator'); ?>">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</h3>
 						<p>Get Now
 							<span>40%</span> Discount</p>
-						<a class="button2" href="product.html">Shop Now </a>
+						<a class="button2" href="<?php echo base_url('shoplocator'); ?>">Shop Now </a>
 					</div>
 				</div>
 			</div>
@@ -105,35 +105,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/m1.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Almonds, 100g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Almonds, 100g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$149.00</span>
-										<del>$280.00</del>
+										<span class="item_price">&#x20B9;49.00</span>
+										<del>&#x20B9;280.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Almonds, 100g" />
-												<input type="hidden" name="amount" value="149.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -144,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/m2.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -152,28 +137,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Cashew Nuts, 100g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Cashew Nuts, 100g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$200.00</span>
-										<del>$420.00</del>
+										<span class="item_price">&#x20B9;200.00</span>
+										<del>&#x20B9;420.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Cashew Nuts, 100g" />
-												<input type="hidden" name="amount" value="200.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -184,7 +154,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/m3.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -192,28 +162,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Pista..., 250g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Pista..., 250g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$520.99</span>
-										<del>$600.99</del>
+										<span class="item_price">&#x20B9;520.99</span>
+										<del>&#x20B9;600.99</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Pista, 250g" />
-												<input type="hidden" name="amount" value="520.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -244,35 +199,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk4.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Freedom Oil, 1L</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Freedom Oil, 1L</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$78.00</span>
-										<del>$110.00</del>
+										<span class="item_price">&#x20B9;78.00</span>
+										<del>&#x20B9;110.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Freedom Sunflower Oil, 1L" />
-												<input type="hidden" name="amount" value="78.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -283,7 +223,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk5.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -291,28 +231,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Saffola Gold, 1L</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Saffola Gold, 1L</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$130.00</span>
-										<del>$150.00</del>
+										<span class="item_price">&#x20B9;130.00</span>
+										<del>&#x20B9;150.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Saffola Gold, 1L" />
-												<input type="hidden" name="amount" value="130.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -323,7 +248,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk6.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -331,27 +256,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Fortune Oil, 5L</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Fortune Oil, 5L</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$399.99</span>
-										<del>$500.00</del>
-									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Fortune Oil, 5L" />
-												<input type="hidden" name="amount" value="399.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
+										<span class="item_price">&#x20B9;399.99</span>
+										<del>&#x20B9;500.00</del>
 									</div>
 
 								</div>
@@ -369,35 +278,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk7.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Yippee Noodles, 65g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Yippee Noodles, 65g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$15.00</span>
-										<del>$25.00</del>
+										<span class="item_price">&#x20B9;15.00</span>
+										<del>&#x20B9;25.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="YiPPee Noodles, 65g" />
-												<input type="hidden" name="amount" value="15.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
-
 								</div>
 							</div>
 						</div>
@@ -407,7 +299,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk8.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -415,28 +307,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Wheat Pasta, 500g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Wheat Pasta, 500g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$98.00</span>
-										<del>$120.00</del>
+										<span class="item_price">&#x20B9;98.00</span>
+										<del>&#x20B9;120.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Wheat Pasta, 500g" />
-												<input type="hidden" name="amount" value="98.00" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -447,7 +324,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<img src="<?php echo asset_url('images/mk9.jpg');?>" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Quick View</a>
+											<a href="<?php echo base_url('shoplocator'); ?>" class="link-product-add-cart">Locate now</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -455,28 +332,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 								<div class="item-info-product ">
 									<h4>
-										<a href="single.html">Chinese Noodles, 68g</a>
+										<a href="<?php echo base_url('shoplocator'); ?>">Chinese Noodles, 68g</a>
 									</h4>
 									<div class="info-product-price">
-										<span class="item_price">$11.99</span>
-										<del>$15.00</del>
+										<span class="item_price">&#x20B9;11.99</span>
+										<del>&#x20B9;15.00</del>
 									</div>
-									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="hidden" name="cmd" value="_cart" />
-												<input type="hidden" name="add" value="1" />
-												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name" value="Chinese Noodles, 68g" />
-												<input type="hidden" name="amount" value="11.99" />
-												<input type="hidden" name="discount_amount" value="1.00" />
-												<input type="hidden" name="currency_code" value="USD" />
-												<input type="hidden" name="return" value=" " />
-												<input type="hidden" name="cancel_return" value=" " />
-												<input type="submit" name="submit" value="Add to cart" class="button" />
-											</fieldset>
-										</form>
-									</div>
+									 
 
 								</div>
 							</div>
@@ -507,101 +369,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s1.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single.html">Aashirvaad, 5g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Aashirvaad, 5g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$220.00</h6>
-									<p>Save $40.00</p>
+									<h6>&#x20B9;220.00</h6>
+									<p>Save &#x20B9;40.00</p>
 								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Aashirvaad, 5g" />
-											<input type="hidden" name="amount" value="220.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
+								 
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s4.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single.html">Kissan Tomato Ketchup, 950g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Kissan Tomato Ketchup, 950g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$99.00</h6>
-									<p>Save $20.00</p>
+									<h6>&#x20B9;99.00</h6>
+									<p>Save &#x20B9;20.00</p>
 								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Kissan Tomato Ketchup, 950g" />
-											<input type="hidden" name="amount" value="99.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
+								 
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s2.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single.html">Madhur Pure Sugar, 1g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Madhur Pure Sugar, 1g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$69.00</h6>
-									<p>Save $20.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Madhur Pure Sugar, 1g" />
-											<input type="hidden" name="amount" value="69.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
+									<h6>&#x20B9;69.00</h6>
+									<p>Save &#x20B9;20.00</p>
 								</div>
 							</div>
 						</div>
@@ -609,33 +425,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single2.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s3.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single2.html">Surf Excel Liquid, 1.02L</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Surf Excel Liquid, 1.02L</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$187.00</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Surf Excel Liquid, 1.02L" />
-											<input type="hidden" name="amount" value="187.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
+									<h6>&#x20B9;187.00</h6>
+									<p>Save &#x20B9;30.00</p>
 								</div>
 							</div>
 						</div>
@@ -643,33 +443,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s8.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single.html">Cadbury Choclairs, 655.5g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Cadbury Choclairs, 655.5g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$160.00</h6>
-									<p>Save $60.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Cadbury Choclairs, 655.5g" />
-											<input type="hidden" name="amount" value="160.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
+									<h6>&#x20B9;160.00</h6>
+									<p>Save &#x20B9;60.00</p>
 								</div>
 							</div>
 						</div>
@@ -677,33 +461,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single2.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s6.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single2.html">Fair & Lovely, 80 g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Fair & Lovely, 80 g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$121.60</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Fair & Lovely, 80 g" />
-											<input type="hidden" name="amount" value="121.60" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
+									<h6>&#x20B9;121.60</h6>
+									<p>Save &#x20B9;30.00</p>
 								</div>
 							</div>
 						</div>
@@ -711,68 +479,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s5.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single.html">Sprite, 2.25L (Pack of 2)</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Sprite, 2.25L (Pack of 2)</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$180.00</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Sprite, 2.25L (Pack of 2)" />
-											<input type="hidden" name="amount" value="180.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
+									<h6>&#x20B9;180.00</h6>
+									<p>Save &#x20B9;30.00</p>
+								</div> 
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="w3l-specilamk">
 							<div class="speioffer-agile">
-								<a href="single2.html">
+								<a href="<?php echo base_url('shoplocator'); ?>">
 									<img src="<?php echo asset_url('images/s9.jpg');?>" alt="">
 								</a>
 							</div>
 							<div class="product-name-w3l">
 								<h4>
-									<a href="single2.html">Lakme Eyeconic Kajal, 0.35 g</a>
+									<a href="<?php echo base_url('shoplocator'); ?>">Lakme Eyeconic Kajal, 0.35 g</a>
 								</h4>
 								<div class="w3l-pricehkj">
-									<h6>$153.00</h6>
-									<p>Save $40.00</p>
+									<h6>&#x20B9;153.00</h6>
+									<p>Save &#x20B9;40.00</p>
 								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Lakme Eyeconic Kajal, 0.35 g" />
-											<input type="hidden" name="amount" value="153.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
+								 
 							</div>
 						</div>
 					</li>

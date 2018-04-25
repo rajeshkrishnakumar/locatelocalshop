@@ -887,5 +887,83 @@ jQuery('#cartcoupon').validate({
 });
 
 
+jQuery('#btncontact').click(function(){
+     jQuery("#contactus").submit();
+});
+
+jQuery('#contactus').validate({
+    errorElement: "span",
+    rules: {
+        name: {
+          required: true
+                },
+        subject: {          
+          required: true
+                },
+        email: {
+          required : true,
+          email : true
+           
+        } ,
+        message:{
+          required : true,
+          maxlength:255
+        }       
+    },
+    messages:{
+      name : {
+       required:"Please enter a valid name"
+      }  ,
+       subject : "Please enter a valid subject"   ,
+     email: {
+          required: "Please enter a email number",
+          email : 'Please enter valid email number'
+        } ,
+      message:{
+        required: "Please enter a message",
+          maxlength : 'Please enter message less then 255'
+      }   
+    },
+
+    submitHandler: function (form) {
+       jQuery.ajax({
+                url: URL + 'contactus/contactuspost',
+                type: "POST",
+                data: jQuery("#contactus").serializeArray(),
+                success: function(transport){
+                 var result=JSON.parse(transport);
+                  
+                    if(result.status==1){
+                      jQuery('#custprofilesucessmsg').html('<strong>Oh yes!</strong> Detail submitted');
+                      jQuery('#custprofilesucessmsg').show();
+                       setTimeout(function(){
+                       jQuery("#custprofilesucessmsg").hide();
+                       }, 3000);         
+                   }else if (result.status==0) {
+                    jQuery('#custprofileerrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
+                    jQuery('#custprofileerrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#custprofileerrormsg").hide();
+                     }, 3000);
+                   }else{
+                     jQuery('#custprofileerrormsg').html(result.status);
+                     jQuery('#custprofileerrormsg').show();
+                     setTimeout(function(){
+                     jQuery("#custprofileerrormsg").hide();
+                     }, 3000);
+                    
+                   }              
+               }
+              });
+            
+    
+    }
+
+  });
+
+
+
+
+
 });
 

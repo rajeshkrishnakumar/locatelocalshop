@@ -411,6 +411,43 @@ class Adminconfig extends CI_Controller
     	}
 	}
 
+	function contactusfetch()
+    {
+   	if ($this->session->userdata("admin")['user_id']) {    	
+		$data['contactus']=$this->adminconfig_config->contactusfetch();
+	 	 $this->load->view('admin/header');
+    	 $this->load->view('admin/contactus',$data);
+    	 $this->load->view('admin/footer');
+    	 }else{
+    	show_404();
+    	}	
+    }
+
+     function completecontactus()
+    {
+
+
+      $data=$this->uri->segment(4);
+	  if(!empty($data))
+	  {
+
+    	  	if($this->adminconfig_config->completecontactus($data))
+		  	{
+		  		redirect('backend/contactus'); 
+		  	}
+		  	else
+		  	{
+		  		redirect('dashboard'); 
+		  	}
+	
+	  }	
+	  else
+	  {
+	  	redirect('dashboard'); 
+	  }	
+	  
+	}
+
     function customerfetch()
     {
    	if ($this->session->userdata("admin")['user_id']) {    	

@@ -2,12 +2,9 @@
 	<div class="footer-top">
 		<div class="container-fluid">
 			<div class="col-xs-8 agile-leftmk">
-				<h2>Get your Groceries delivered from local stores</h2>
-				<p>Free Delivery on your first order!</p>
-				<form action="#" method="post">
-					<input type="email" placeholder="E-mail" name="email" required="">
-					<input type="submit" value="Subscribe">
-				</form>
+				<h2>Get your Groceries & everything delivered from local stores</h2>
+				<p>Get your first order!</p>
+				 	
 				<div class="newsform-w3l">
 					<span class="fa fa-envelope-o" aria-hidden="true"></span>
 				</div>
@@ -24,7 +21,7 @@
 		<div class="container">
 			<!-- footer first section -->
 			<p class="footer-main">
-				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+				<span>"Locate Local Shop"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
 				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error sit voluptatem
 				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
 				beatae vitae dicta sunt explicabo.</p>
@@ -69,44 +66,44 @@
 						<h3>Categories</h3>
 						<ul>
 							<li>checkout
-								<a href="product.html">Grocery</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Grocery</a>
 							</li>
 							<li>
-								<a href="product.html">Fruits</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Fruits</a>
 							</li>
 							<li>
-								<a href="product.html">Soft Drinks</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Soft Drinks</a>
 							</li>
 							<li>
-								<a href="product2.html">Dishwashers</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Dishwashers</a>
 							</li>
 							<li>
-								<a href="product.html">Biscuits & Cookies</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Biscuits & Cookies</a>
 							</li>
 							<li>
-								<a href="product2.html">Baby Diapers</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Baby Diapers</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xs-6 footer-grids agile-secomk">
 						<ul>
 							<li>
-								<a href="product.html">Snacks & Beverages</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Snacks & Beverages</a>
 							</li>
 							<li>
-								<a href="product.html">Bread & Bakery</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Bread & Bakery</a>
 							</li>
 							<li>
-								<a href="product.html">Sweets</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Sweets</a>
 							</li>
 							<li>
-								<a href="product.html">Chocolates & Biscuits</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Chocolates & Biscuits</a>
 							</li>
 							<li>
-								<a href="product2.html">Personal Care</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Personal Care</a>
 							</li>
 							<li>
-								<a href="product.html">Dried Fruits & Nuts</a>
+								<a href="<?php echo base_url('shoplocator'); ?>">Dried Fruits & Nuts</a>
 							</li>
 						</ul>
 					</div>
@@ -119,22 +116,19 @@
 						<h3>Quick Links</h3>
 						<ul>
 							<li>
-								<a href="about.html">About Us</a>
+								<a href="<?php echo base_url('about-us'); ?>">About Us</a>
 							</li>
 							<li>
-								<a href="contact.html">Contact Us</a>
+								<a href="<?php echo base_url('contact-us'); ?>">Contact Us</a>
 							</li>
 							<li>
-								<a href="help.html">Help</a>
+								<a href="<?php echo base_url('faqs'); ?>">Faqs</a>
 							</li>
 							<li>
-								<a href="faqs.html">Faqs</a>
+								<a href="<?php echo base_url('terms'); ?>">Terms of use</a>
 							</li>
 							<li>
-								<a href="terms.html">Terms of use</a>
-							</li>
-							<li>
-								<a href="privacy.html">Privacy Policy</a>
+								<a href="<?php echo base_url('privacy'); ?>">Privacy Policy</a>
 							</li>
 						</ul>
 					</div>
@@ -142,14 +136,14 @@
 						<h3>Get in Touch</h3>
 						<ul>
 							<li>
-								<i class="fa fa-map-marker"></i> 123 Sebastian, USA.</li>
+								<i class="fa fa-map-marker"></i>  123 Sebastian, Colaba 400005, Mumbai.</li>
 							<li>
 								<i class="fa fa-mobile"></i> 333 222 3333 </li>
 							<li>
 								<i class="fa fa-phone"></i> +222 11 4444 </li>
 							<li>
 								<i class="fa fa-envelope-o"></i>
-								<a href="mailto:example@mail.com"> mail@example.com</a>
+								<a href="mailto:example@mail.com"> mail@locallocateshop.com</a>
 							</li>
 						</ul>
 					</div>
@@ -195,7 +189,7 @@
 			<!-- footer fourth section (text) -->
 			<div class="agile-sometext">
 				<div class="sub-some">
-					<h5>Online Grocery Shopping</h5>
+					<h5>Locate Local Shop</h5>
 					<p>Order online. All your favourite products from the low price online supermarket for grocery home delivery in Delhi,
 						Gurgaon, Bengaluru, Mumbai and other cities in India. Lowest prices guaranteed on Patanjali, Aashirvaad, Pampers, Maggi,
 						Saffola, Huggies, Fortune, Nestle, Amul, MamyPoko Pants, Surf Excel, Ariel, Vim, Haldiram's and others.</p>
@@ -210,106 +204,106 @@
 					<h5>Popular Brands</h5>
 					<ul>
 						<li>
-							<a href="product.html">Aashirvaad</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Aashirvaad</a>
 						</li>
 						<li>
-							<a href="product.html">Amul</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Amul</a>
 						</li>
 						<li>
-							<a href="product.html">Bingo</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Bingo</a>
 						</li>
 						<li>
-							<a href="product.html">Boost</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Boost</a>
 						</li>
 						<li>
-							<a href="product.html">Durex</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Durex</a>
 						</li>
 						<li>
-							<a href="product.html"> Maggi</a>
+							<a href="<?php echo base_url('shoplocator'); ?>"> Maggi</a>
 						</li>
 						<li>
-							<a href="product.html">Glucon-D</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Glucon-D</a>
 						</li>
 						<li>
-							<a href="product.html">Horlicks</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Horlicks</a>
 						</li>
 						<li>
-							<a href="product2.html">Head & Shoulders</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Head & Shoulders</a>
 						</li>
 						<li>
-							<a href="product2.html">Dove</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Dove</a>
 						</li>
 						<li>
-							<a href="product2.html">Dettol</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Dettol</a>
 						</li>
 						<li>
-							<a href="product2.html">Dabur</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Dabur</a>
 						</li>
 						<li>
-							<a href="product2.html">Colgate</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Colgate</a>
 						</li>
 						<li>
-							<a href="product.html">Coca-Cola</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Coca-Cola</a>
 						</li>
 						<li>
-							<a href="product2.html">Closeup</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Closeup</a>
 						</li>
 						<li>
-							<a href="product2.html"> Cinthol</a>
+							<a href="<?php echo base_url('shoplocator'); ?>"> Cinthol</a>
 						</li>
 						<li>
-							<a href="product.html">Cadbury</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Cadbury</a>
 						</li>
 						<li>
-							<a href="product.html">Bru</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Bru</a>
 						</li>
 						<li>
-							<a href="product.html">Bournvita</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Bournvita</a>
 						</li>
 						<li>
-							<a href="product.html">Tang</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Tang</a>
 						</li>
 						<li>
-							<a href="product.html">Pears</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Pears</a>
 						</li>
 						<li>
-							<a href="product.html">Oreo</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Oreo</a>
 						</li>
 						<li>
-							<a href="product.html"> Taj Mahal</a>
+							<a href="<?php echo base_url('shoplocator'); ?>"> Taj Mahal</a>
 						</li>
 						<li>
-							<a href="product.html">Sprite</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Sprite</a>
 						</li>
 						<li>
-							<a href="product.html">Thums Up</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Thums Up</a>
 						</li>
 						<li>
-							<a href="product2.html">Fair & Lovely</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Fair & Lovely</a>
 						</li>
 						<li>
-							<a href="product2.html">Lakme</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Lakme</a>
 						</li>
 						<li>
-							<a href="product.html">Tata</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Tata</a>
 						</li>
 						<li>
-							<a href="product2.html">Sunfeast</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Sunfeast</a>
 						</li>
 						<li>
-							<a href="product2.html">Sunsilk</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Sunsilk</a>
 						</li>
 						<li>
-							<a href="product.html">Patanjali</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Patanjali</a>
 						</li>
 						<li>
-							<a href="product.html">MTR</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">MTR</a>
 						</li>
 						<li>
-							<a href="product.html">Kissan</a>
+							<a href="<?php echo base_url('shoplocator'); ?>">Kissan</a>
 						</li>
 						<li>
-							<a href="product2.html"> Lipton</a>
+							<a href="<?php echo base_url('shoplocator'); ?>"> Lipton</a>
 						</li>
 					</ul>
 				</div>
@@ -356,8 +350,8 @@
 	<!-- copyright -->
 	<div class="copy-right">
 		<div class="container">
-			<p>© 2017 Grocery Shoppy. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
+			<p>© 2018 Locate Local Shop. All rights reserved | Design by
+				<a href="#"> Rajesh.</a>
 			</p>
 		</div>
 	</div>

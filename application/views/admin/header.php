@@ -80,7 +80,8 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php echo asset_url('admin/images/users/5.jpg');?>" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="ti-user"></i> Profile</a></li>                                 
+                                    <?php $profileurl='backend/adminuser/edit/'.$this->session->userdata("admin")["user_id"]; ?>
+                                    <li><a href="<?php echo base_url($profileurl); ?>"><i class="ti-user"></i> Profile</a></li>                                 
                                     <li><a href="<?php echo base_url('backend/logout'); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -117,7 +118,7 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url('backend/customer'); ?>">Customer Account View</a></li>
                                  <li><a href="<?php echo base_url('backend/customeraddress'); ?>"">Customer Address View</a></li>
-                             
+                                <li><a href="<?php echo base_url('backend/contactus'); ?>"">Contact Us View</a></li>
                             </ul>
                         </li>
                         <li class="nav-label">Product</li>
