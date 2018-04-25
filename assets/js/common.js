@@ -4,6 +4,10 @@ jQuery('#loginsubmit').click(function(){
      jQuery("#login").submit();
 });
 
+jQuery('#homecart').click(function(){
+  window.location.href=URL+'cart';
+});
+
 jQuery('#login').validate({
     errorElement: "span",
     rules: {
@@ -687,9 +691,10 @@ jQuery('#checkout').validate({
                     if(result.status==1){
                       jQuery('#checkoutsucessmsgs').html('<strong>Oh yes!</strong> Order Placed');
                       jQuery('#checkoutsucessmsgs').show();
+                       jQuery('#checkout')[0].reset();
                        setTimeout(function(){
                        jQuery("#checkoutsucessmsgs").hide();
-                       }, 3000);         
+                       }, 8000);         
                        window.location.href=URL;
                    }else if (result.status==0) {
                     jQuery('#checkouterrormsg').html('<strong>Oh snap!</strong> Change a few things up and try submitting again.');
@@ -863,7 +868,7 @@ jQuery('#cartcoupon').validate({
                        setTimeout(function(){
                        jQuery("#checkoutsucessmsgs1").hide();
                        }, 3000);         
-                       window.location.href=URL;
+                        window.location.reload(); 
                    }else if (result.status==0) {
                     jQuery('#checkouterrormsg1').html('<strong>Oh snap!</strong> Wrong Coupon Code');
                     jQuery('#checkouterrormsg1').show();
