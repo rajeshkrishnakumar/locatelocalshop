@@ -61,10 +61,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator</a>
 					</li>
 					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
-					</li>
-					<li>
 						<span class="fa fa-phone" aria-hidden="true"></span> 001 234 5678
 					</li>
 					<?php if(!isset($_SESSION['user'])){ ?>
